@@ -23,173 +23,383 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<canvas class="sparks" aria-hidden="true"></canvas>
+
 <main id="main">
-<header class="hero wrap" id="top">
-  <div class="topbar"><b>M·B·J</b><nav aria-label="Main"><a href="#story">Story</a><a href="#work">Work</a><a href="#ventures">Ventures</a><a href="#map">Map</a><a href="#beyond">Beyond</a><a href="#contact">Contact</a></nav></div>
-  <h1 data-split>Manasseh Baby John</h1>
-  <div class="tk" role="group" aria-label="Two sides of the same ticket">
-    <div class="tk-half tk-ledger">
-      <span class="no">Ledger · On the clock</span>
-      <p class="big">International Business, Market Development, Strategic Partnerships, Entrepreneurship.</p>
-      <div class="tk-foot"><span>Admit one · business</span><span class="barcode" aria-hidden="true"></span></div>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="mark" href="#top">M·B·J</a>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#story">Story</a><a href="#council">Council</a><a href="#work">Work</a><a href="#ventures">Ventures</a><a href="#passport">Passport</a><a href="#beyond">Beyond</a><a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div class="tk-half tk-arcade">
-      <span class="no">Arcade · Off the clock</span>
-      <p class="big">Gamer. Perfume enthusiast. Ronaldo fan. Food reviewer with friends.</p>
-      <div class="tk-foot"><span class="sticker">@babytalksback</span><span>Admit one · everything else</span></div>
+    <h1 class="name" data-name>Manasseh Baby John</h1>
+
+    <div class="tk" role="group" aria-label="Two sides of the same ticket">
+      <div class="tk-half tk-ledger">
+        <p class="tk-lbl">Ledger · On the clock</p>
+        <p class="big">I sell, build partnerships and open new markets. Right now: East Africa, for TETR College of Business.</p>
+        <p class="tags">International business · Market development · Strategic partnerships · Entrepreneurship</p>
+      </div>
+      <div class="tk-half tk-arcade">
+        <p class="tk-lbl">Arcade · Off the clock</p>
+        <p class="big">Off the clock I'm <span class="rot" data-rot data-phrases="defending Ronaldo.|reviewing food on camera with friends.|deep in GTA.|hunting the next perfume.|adding to the Nerf collection.">defending Ronaldo, reviewing food on camera with friends, deep in GTA, hunting the next perfume and adding to the Nerf collection.</span></p>
+        <div class="tk-foot"><span class="peel" data-peel>@babytalksback</span><span class="mono">Admit one · everything else</span></div>
+      </div>
+    </div>
+
+    <div class="stub" data-stub>
+      <div class="stub-cell stub-age">
+        <p class="k">Age, live</p>
+        <p class="odo" data-odo aria-hidden="true">26.02328767</p>
+        <button class="unit" type="button" data-unit aria-label="Change the age unit">years</button>
+      </div>
+      <div class="stub-cell stub-lvl">
+        <p class="k lvls"><span data-lvl-now>LVL 26</span><span data-lvl-next>LVL 27</span></p>
+        <div class="xp" aria-hidden="true"><i data-xp></i></div>
+        <p class="cd" data-cd-line>Level 27 unlocks in <b data-cd>356d 12h 00m 00s</b></p>
+      </div>
+      <div class="stub-cell stub-fine">
+        <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="sealpath" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1 -92 0"/></defs>
+          <circle cx="60" cy="60" r="58"/>
+          <text><textPath href="#sealpath">BORN 27 OCT 2000 · UAE TIME · ADMIT ONE ·</textPath></text>
+          <text class="seal-n" x="60" y="72" text-anchor="middle" data-seal>26</text>
+        </svg>
+        <div>
+          <p>Born 27 October 2000, UAE time.</p>
+          <p class="mile" data-mile>Day 10,000 lands on 14 Mar 2028.</p>
+        </div>
+      </div>
+      <p class="sr-only" data-age-sr>I'm 26. My next birthday is 27 October 2027.</p>
     </div>
   </div>
-  <p class="stubline"><span>№ 001</span> Sales first. Everything else later.</p>
 </header>
 
-<section class="arcade-sec" id="story">
-  <div class="wrap twelve">
-    <p class="big12" aria-hidden="true">12<span class="sticker">×2</span></p>
+<div class="motto" aria-label="Sales first. Everything else later.">
+  <svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+    <path id="mottopath" d="M-40 110 C 320 20, 720 150, 1060 70 S 1480 60, 1520 90"/>
+    <text><textPath href="#mottopath" data-motto>SALES FIRST · EVERYTHING ELSE LATER · SALES FIRST · EVERYTHING ELSE LATER · SALES FIRST · EVERYTHING ELSE LATER · SALES FIRST · EVERYTHING ELSE LATER · SALES FIRST · EVERYTHING ELSE LATER · SALES FIRST · EVERYTHING ELSE LATER ·</textPath></text>
+  </svg>
+</div>
+
+<section class="origin" id="story" data-island="Origin story">
+  <div class="wrap origin-grid">
+    <p class="big12" aria-hidden="true">12<span class="sticker" data-x2>×2</span></p>
     <div>
-      <span class="no">№ 02 · Where it started</span>
+      <p class="lbl"><b>01</b>Origin story</p>
       <h2 data-split>It started at 12.</h2>
       <blockquote data-reveal>
         <p>My first taste of sales came at my school's annual Winter Fiesta. I was 12 years old and managed to sell more tickets than anyone else in my class. I repeated that achievement the following year.</p>
         <p>At the time, it was simply a school competition. Looking back, perhaps the commercial instinct was already there.</p>
       </blockquote>
-      <div class="counter" data-reveal><span>Year 1 · most tickets in class</span><span>Year 2 · again</span></div>
+      <div class="raffles">
+        <div class="raffle" data-raffle><span class="mono">Winter Fiesta · Year one</span><b>Most tickets in my class</b><span class="no">№ 0001</span></div>
+        <div class="raffle" data-raffle><span class="mono">Winter Fiesta · Year two</span><b>Did it again</b><span class="no">№ 0002</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="twist" id="twist">
+<section class="scores" id="council" data-island="High scores">
+  <canvas class="dotgrid" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="lbl"><b>02</b>Student Council · Heriot-Watt University</p>
+    <h2 data-split>High scores.</h2>
+    <p class="lede" data-reveal>Three terms as Vice President of Events on the Heriot-Watt University Student Council. Player one: MBJ.</p>
+    <table class="board">
+      <thead><tr><th scope="col">Score</th><th scope="col">Entry</th><th scope="col">Player</th></tr></thead>
+      <tbody>
+        <tr><td data-scramble>3×</td><td>Vice President of Events</td><td>MBJ</td></tr>
+        <tr><td data-scramble>3×</td><td>Event of the Year</td><td>MBJ</td></tr>
+        <tr><td data-scramble>2×</td><td>Funny Bone Award</td><td>MBJ</td></tr>
+        <tr><td data-scramble>FIRST</td><td>Candidate to win three elections in a row</td><td>MBJ</td></tr>
+        <tr><td data-scramble>FIRST</td><td>Vice President to win two elections in a row</td><td>MBJ</td></tr>
+        <tr><td data-scramble>RECORD</td><td>Highest vote margin in a VP Events election</td><td>MBJ</td></tr>
+        <tr><td data-scramble>RECORD</td><td>Most events held in a three-year period</td><td>MBJ</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="twist" id="twist" data-island="Plot twist">
   <div class="wrap twist-grid">
-    <div class="ballot">
-      <span class="no">Heriot-Watt Student Council</span>
+    <div class="ballot" data-ballot>
+      <p class="ballot-h">Heriot-Watt University Student Council · Ballot</p>
       <ul>
-        <li>VP of Events <b>Won</b></li>
-        <li>VP of Events, again <b>Won</b></li>
-        <li>VP of Events, a third time <b>Won</b></li>
+        <li><span>VP of Events</span><b>Won</b></li>
+        <li><span>VP of Events, again</span><b>Won</b></li>
+        <li><span>VP of Events, a third time</span><b>Won</b></li>
       </ul>
-      <div class="pres"><h3>President</h3><span class="stamp">Disqualified</span></div>
+      <div class="pres"><div><h3>President</h3><span class="mono">Record start: most votes in the first three days</span></div><span class="stamp" data-stamp>Disqualified</span></div>
     </div>
     <div>
-      <span class="no">№ 03 · The plot twist</span>
+      <p class="lbl lbl-light"><b>03</b>Plot twist</p>
       <h2 data-split>Then I ran for President.</h2>
-      <p class="quote" data-reveal>I was disqualified. It sent me into student recruitment, <em>which is where the career actually started.</em></p>
+      <p class="quote" data-reveal>Three VP elections, three wins. So I ran for President of the Heriot-Watt University Student Council, and set the record for the most votes in the first three days of the race. Then I was disqualified. <em>Losing that race pushed me into student recruitment, and I've built my career around it since.</em></p>
+      <div class="continue" data-continue>
+        <p class="mono" aria-hidden="true">CONTINUE? <b data-count9>9</b></p>
+        <a class="btn" href="#work"><i class="tri" aria-hidden="true"></i>Continue: student recruitment</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="ledger-sec" id="work">
+<section class="work" id="work" data-island="The work">
   <div class="wrap">
-    <span class="no">№ 04 · The work</span>
-    <h2 data-split>TETR College of Business. Now.</h2>
-    <div class="tetr">
-      <div data-reveal>
-        <p class="lede">Regional Manager (MENA), International Recruitment &amp; Partnerships, since October 2024. I build TETR's presence across East Africa (Tanzania, Kenya, Rwanda and Ethiopia): market research, finding and developing partners, proposals and negotiations, then watching the pipeline for where it leaks.</p>
-        <div class="chips">
-          <span class="chip"><b>60+</b>Open Day registrations in 7 days</span>
-          <span class="chip"><b>~15</b>potential partners developed</span>
-        </div>
-        <p class="foot">Team results from a four-person team. I was personally involved in 9 of the 12 recorded African admissions in 2026. I organised TETR's first Open Day in October 2025.</p>
+    <p class="lbl"><b>04</b>The work</p>
+    <h2 data-split>Right now: TETR College of Business.</h2>
+    <p class="lede" data-reveal>Regional Manager (MENA), International Recruitment &amp; Partnerships, since October 2024. I'm building TETR's presence in Tanzania, Kenya, Rwanda and Ethiopia: researching the market, finding partners worth having, writing proposals, negotiating, then watching the pipeline for where it leaks.</p>
+
+    <div class="flapwrap" data-reveal>
+      <table class="flap">
+        <caption><span>Arrivals · Africa</span><span>2025 → 2026</span></caption>
+        <thead><tr><th scope="col">Route</th><th scope="col">2025</th><th scope="col">2026</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" data-flap>OFFER HOLDERS</th><td data-flap>33</td><td data-flap>53</td><td data-flap class="ok">~61%</td></tr>
+          <tr><th scope="row" data-flap>ADMISSIONS</th><td data-flap>4</td><td data-flap>12</td><td data-flap class="ok">+200%</td></tr>
+          <tr><th scope="row" data-flap>CONVERSION</th><td data-flap>12.1%</td><td data-flap>22.6%</td><td data-flap class="ok">UP</td></tr>
+          <tr><th scope="row" data-flap>FIRST OPEN DAY</th><td colspan="3" data-flap>60+ REGISTRATIONS IN 7 DAYS</td></tr>
+          <tr><th scope="row" data-flap>PARTNERS</th><td colspan="3" data-flap>~15 DEVELOPED</td></tr>
+        </tbody>
+      </table>
+      <div class="markets">
+        <span class="mono">TETR markets</span>
+        <span class="flagrow"><img src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/tz.svg" alt="Tanzania" width="32" height="24"><img src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/ke.svg" alt="Kenya" width="32" height="24"><img src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/rw.svg" alt="Rwanda" width="32" height="24"><img src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/et.svg" alt="Ethiopia" width="32" height="24"></span>
       </div>
-      <div class="bars">
-        <div class="bar-row" data-reveal><div class="lbl"><b>Africa admissions</b><span><small>4 →</small><span data-count="12">12</span></span></div><div class="bar"><i style="width:33%"></i><i style="width:100%"></i></div></div>
-        <div class="bar-row" data-reveal><div class="lbl"><b>Africa offer holders</b><span><small>33 →</small><span data-count="53">53</span></span></div><div class="bar"><i style="width:62%"></i><i style="width:100%"></i></div></div>
-        <div class="bar-row" data-reveal><div class="lbl"><b>Offer-to-admission conversion</b><span><small>12.1% →</small><span data-count="22.6" data-suffix="%">22.6%</span></span></div><div class="bar"><i style="width:54%"></i><i style="width:100%"></i></div></div>
-        <p class="mono" style="font-size:.75rem;color:var(--mute)">Grey bar 2025 · navy bar 2026</p>
+      <p class="foot">Team numbers from a team of four. I was personally involved in 9 of the 12 recorded African admissions in 2026, and I organised TETR's first Open Day in October 2025.</p>
+    </div>
+  </div>
+
+  <div class="route" data-route>
+    <div class="wrap">
+      <h3 class="route-h" data-split>How I got here.</h3>
+      <div class="rail" aria-label="Timeline from 2019 to now. Study: MA at Heriot-Watt, 2019 to 2022. Work: Ontime summer 2019, Nike July to September 2021, EXPO 2020 January to March 2022, Heriot-Watt March 2022 to October 2024, TETR October 2024 to now." role="img">
+        <div class="lane"><span class="lane-k">Study</span><div class="bars"><i class="bar deg" style="--a:.5;--b:3.5" data-tip="MA (Hons) International Business Management, 2019–2022"><em>Heriot-Watt MA</em></i></div></div>
+        <div class="lane"><span class="lane-k">Work</span><div class="bars">
+          <i class="bar" style="--a:.42;--b:.67" data-tip="Ontime, Summer 2019"><em>Ontime</em></i>
+          <i class="bar nike" style="--a:2.5;--b:2.75" data-tip="Nike, Jul–Sep 2021"><em class="low">Nike</em></i>
+          <i class="bar" style="--a:3;--b:3.25" data-tip="EXPO 2020, Jan–Mar 2022"><em>EXPO</em></i>
+          <i class="bar hw" style="--a:3.17;--b:5.79" data-tip="Heriot-Watt, Mar 2022–Oct 2024"><em class="low">Heriot-Watt</em></i>
+          <i class="bar tetr" style="--a:5.75;--b:7.85" data-tip="TETR, Oct 2024–now"><em>TETR</em></i>
+        </div></div>
+        <svg class="axis" viewBox="0 0 800 24" preserveAspectRatio="none" aria-hidden="true"><path data-axis d="M0 4H800"/></svg>
+        <div class="years" aria-hidden="true"><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
       </div>
     </div>
-    <div class="roles">
-      <div class="role" data-reveal><span class="mono">Mar 2022 – Oct 2024</span><h3>Heriot-Watt University</h3><p>International Recruitment &amp; Partnerships Officer (MENA). Partners, agents and institutions across the region.</p></div>
-      <div class="role" data-reveal><span class="mono">Jan – Mar 2022</span><h3>EXPO 2020 Dubai</h3><p>Country Pavilion Coordinator / Volunteer Lead, Palau Pavilion.</p></div>
-      <div class="role" data-reveal><span class="mono">2019 – 2022</span><h3>Heriot-Watt University</h3><p>MA (Hons) International Business Management, 2:1.</p></div>
-      <div class="role" data-reveal><span class="mono">Summer 2019</span><h3>Ontime Manpower Supply</h3><p>Project Coordinator, RTA / Dubai Tram testing. 200+ students.</p></div>
+    <div class="track-clip">
+      <div class="track" data-track>
+        <article class="tix t-transit" tabindex="0">
+          <div class="punch" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p class="when">Summer 2019</p>
+          <h4>Ontime Manpower Supply</h4>
+          <p class="role">Project Coordinator</p>
+          <p>The RTA's Dubai Tram testing project: 200+ students, a lot of logistics, and my first real taste of project coordination.</p>
+          <p class="mono t-foot">RTA · Dubai Tram · Testing</p>
+        </article>
+        <article class="tix t-label" tabindex="0">
+          <div class="lbl-top mono"><span>Ship from</span><span>Summer 2021</span></div>
+          <p class="when">Jul – Sep 2021</p>
+          <h4>Nike</h4>
+          <p class="role">Warehouse Assistant</p>
+          <p>The summer before my final year, on the warehouse floor. Not every line on a CV has to be glamorous to count.</p>
+          <div class="barcode" aria-hidden="true"></div>
+        </article>
+        <article class="tix t-lanyard" tabindex="0" data-lanyard>
+          <div class="strap" aria-hidden="true"></div>
+          <p class="when">Jan – Mar 2022</p>
+          <h4>EXPO 2020 Dubai</h4>
+          <p class="role">Country Pavilion Coordinator / Volunteer Lead, Palau Pavilion</p>
+          <p>Volunteers, visitors and event operations for one of the smallest countries at the biggest show in town.</p>
+          <p class="mono t-foot">Access · All areas</p>
+        </article>
+        <article class="tix t-staff" tabindex="0">
+          <div class="band mono" aria-hidden="true">Staff</div>
+          <p class="when">Mar 2022 – Oct 2024</p>
+          <h4>Heriot-Watt University</h4>
+          <p class="role">International Recruitment &amp; Partnerships Officer (MENA)</p>
+          <p>I started before I'd technically graduated. Partners, agents and institutions across MENA, and a crash course in how universities actually make decisions.</p>
+        </article>
+        <article class="tix t-board" tabindex="0">
+          <div class="bp mono" aria-hidden="true"><span>From<b>UAE</b></span><span class="plane"></span><span>To<b>TZ · KE · RW · ET</b></span></div>
+          <p class="when">Oct 2024 – now</p>
+          <h4>TETR College of Business</h4>
+          <p class="role">Regional Manager (MENA), International Recruitment &amp; Partnerships</p>
+          <p>Gate: open. The board above is the scorecard.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="arcade-sec" id="ventures">
+<section class="ventures" id="ventures" data-island="Ventures">
   <div class="wrap">
-    <span class="no">№ 05 · Things I'm building</span>
+    <p class="lbl lbl-light"><b>05</b>Things I'm building</p>
     <h2 data-split>My own tickets.</h2>
-    <div class="stack">
-      <article class="vcard" style="--i:0">
-        <div><span class="badge">Co-founded · 2026 · Dubai</span><h3>M² Tournaments</h3><p class="tag">Where Champions Meet.</p></div>
-        <div><p>Milan Mathew and I started M² with inter-church football tournaments in Dubai. Next: a multi-sport event platform across the UAE. I'm Founder and Tournament Director, which covers the vision and formats, plus brand, sponsors and partners, venues, permissions and insurance, and the experience on the day.</p><a href="https://m2tournaments.com/">m2tournaments.com ↗</a></div>
+    <p class="lede" data-reveal>Two I'm building, one I'm still drawing up.</p>
+    <div class="vgrid">
+      <article class="vt vt-m2" data-tilt>
+        <span class="vstamp">Co-founded · 2026 · Dubai</span>
+        <h3>M² Tournaments</h3>
+        <p class="vtag">Where Champions Meet.</p>
+        <p>Milan Mathew and I started M² with inter-church football in Dubai. Now we're building it into multi-sport across the UAE. As Founder and Tournament Director I set the vision and the formats, and I look after the brand, sponsors, venues, permits, insurance and how the day feels for players and fans.</p>
+        <div class="vfill">
+          <p class="mono">Fixtures</p>
+          <ul class="fixtures"><li class="on">Football<span>First</span></li><li>Cricket</li><li>Basketball</li><li>Volleyball</li><li>Badminton</li></ul>
+        </div>
+        <a class="vstub" href="https://m2tournaments.com/" target="_blank" rel="noopener">m2tournaments.com <span aria-hidden="true">↗</span></a>
       </article>
-      <article class="vcard" style="--i:1">
-        <div><span class="badge">Independent project · Beta-ready</span><h3>Trovea</h3><p class="tag">AI · Education technology</p></div>
-        <div><p>An AI-powered study-abroad and university-matching platform I've been building: course and university discovery, scholarship matching, comparisons and personalised recommendations. The hard part is the part nobody sees: data architecture, recommendation logic and UX.</p></div>
+      <article class="vt vt-tr" data-tilt>
+        <span class="vstamp">Independent project · Beta-ready</span>
+        <h3>Trovea</h3>
+        <p class="vtag">AI · EdTech · University matching</p>
+        <p>Since 2022 my job has been helping students choose universities. Trovea is my attempt to put that judgement into software: course and university discovery, scholarship matching, side-by-side comparisons and personalised recommendations. I've worked on the product strategy, data architecture, UX and recommendation logic.</p>
+        <div class="vfill">
+          <p class="mono">How it works</p>
+          <svg class="flow" viewBox="0 0 320 70" role="img" aria-label="Profile, then match, then compare, then decide">
+            <path data-flowline d="M24 35H296"/>
+            <g><circle cx="24" cy="35" r="9"/><text x="24" y="64">Profile</text></g>
+            <g><circle cx="115" cy="35" r="9"/><text x="115" y="64">Match</text></g>
+            <g><circle cx="206" cy="35" r="9"/><text x="206" y="64">Compare</text></g>
+            <g><circle cx="296" cy="35" r="9"/><text x="296" y="64">Decide</text></g>
+          </svg>
+        </div>
+        <p class="vstub">Beta-ready</p>
+      </article>
+      <article class="vt vt-next" data-tilt>
+        <span class="vstamp">In development</span>
+        <h3>Not printed yet</h3>
+        <p class="vtag">Education consultancy · UAE</p>
+        <p>An education consultancy in the UAE. Formation and licensing are still under consideration, so there's no name yet.</p>
+        <div class="vfill vfill-dash"><p class="mono">Name: pending<br>Licence: under consideration<br>Status: exploring</p></div>
+        <p class="vstub">In development</p>
       </article>
     </div>
   </div>
 </section>
 
-<section class="ledger-sec" id="map">
-  <div class="wrap map">
-    <span class="no">№ 06 · Stamps in the passport</span>
-    <h2 data-split>23 countries. Four of them for work.</h2>
-    <p class="lede" data-reveal style="margin-bottom:28px">The UAE is home. East Africa and the wider MENA region are where I've worked. Everything else was curiosity.</p>
-    <div class="legend"><span class="lg-v">Visited</span><span class="lg-w">Worked in (plus wider MENA)</span><span class="lg-h">Home · UAE</span></div>
-    <svg data-map role="img" aria-label="World map of countries visited and markets worked in"></svg>
-    <ul class="map-list" data-map-list aria-label="Countries visited; East African work markets highlighted"></ul>
-  </div>
-</section>
-
-<section class="arcade-sec" id="campus">
+<section class="passport" id="passport" data-island="Passport">
   <div class="wrap">
-    <span class="no">№ 07 · Student Council, Heriot-Watt</span>
-    <h2 data-split>The record books.</h2>
-    <ul class="records">
-      <li data-reveal><b>3×</b>Vice President of Events</li>
-      <li data-reveal><b>3×</b>Event of the Year</li>
-      <li data-reveal><b>2×</b>Funny Bone Award</li>
-      <li data-reveal><b>First</b>candidate to win three elections in a row</li>
-      <li data-reveal><b>First</b>VP to win two elections in a row</li>
-      <li data-reveal><b>Record</b>highest vote margin, VP Events</li>
-      <li data-reveal><b>Record</b>most votes in the first three days of a President election</li>
-      <li data-reveal><b>Record</b>most events in three years</li>
-    </ul>
-    <p class="fine">Self-reported.</p>
+    <p class="lbl"><b>06</b>Passport</p>
+    <h2 data-split>23 countries, and the UAE is home.</h2>
+    <p class="lede" data-reveal>Five of them I've worked in: Tanzania, Kenya, Rwanda, Ethiopia and Zimbabwe. MENA is in both my job titles, so the wider region is work too. The rest was curiosity.</p>
+    <div class="layers" role="group" aria-label="Map layers">
+      <button type="button" aria-pressed="true" data-layer="all">All</button>
+      <button type="button" aria-pressed="false" data-layer="work">Worked · 5</button>
+      <button type="button" aria-pressed="false" data-layer="visit">Visited · 23</button>
+      <span class="hint mono">Hover or tap a country</span>
+    </div>
+    <div class="map" data-map></div>
+    <div class="chips">
+      <div class="chipgroup"><p class="mono">Home</p><ul><li><button type="button" data-id="784" data-cc="ae" data-tag="Home">United Arab Emirates</button></li></ul></div>
+      <div class="chipgroup"><p class="mono">Worked</p><ul>
+        <li><button type="button" data-id="834" data-cc="tz" data-tag="Worked · TETR market">Tanzania</button></li>
+        <li><button type="button" data-id="404" data-cc="ke" data-tag="Worked · TETR market">Kenya</button></li>
+        <li><button type="button" data-id="646" data-cc="rw" data-tag="Worked · TETR market">Rwanda</button></li>
+        <li><button type="button" data-id="231" data-cc="et" data-tag="Worked · TETR market">Ethiopia</button></li>
+        <li><button type="button" data-id="716" data-cc="zw" data-tag="Worked">Zimbabwe</button></li>
+      </ul></div>
+      <div class="chipgroup"><p class="mono">Visited</p><ul>
+        <li><button type="button" data-id="250" data-cc="fr" data-tag="Visited · Paris included">France</button></li>
+        <li><button type="button" data-id="756" data-cc="ch" data-tag="Visited">Switzerland</button></li>
+        <li><button type="button" data-id="300" data-cc="gr" data-tag="Visited">Greece</button></li>
+        <li><button type="button" data-id="688" data-cc="rs" data-tag="Visited">Serbia</button></li>
+        <li><button type="button" data-id="268" data-cc="ge" data-tag="Visited">Georgia</button></li>
+        <li><button type="button" data-id="031" data-cc="az" data-tag="Visited">Azerbaijan</button></li>
+        <li><button type="button" data-id="682" data-cc="sa" data-tag="Visited">Saudi Arabia</button></li>
+        <li><button type="button" data-id="634" data-cc="qa" data-tag="Visited">Qatar</button></li>
+        <li><button type="button" data-id="048" data-cc="bh" data-tag="Visited">Bahrain</button></li>
+        <li><button type="button" data-id="512" data-cc="om" data-tag="Visited">Oman</button></li>
+        <li><button type="button" data-id="356" data-cc="in" data-tag="Visited">India</button></li>
+        <li><button type="button" data-id="144" data-cc="lk" data-tag="Visited">Sri Lanka</button></li>
+        <li><button type="button" data-id="764" data-cc="th" data-tag="Visited">Thailand</button></li>
+        <li><button type="button" data-id="458" data-cc="my" data-tag="Visited">Malaysia</button></li>
+        <li><button type="button" data-id="702" data-cc="sg" data-tag="Visited">Singapore</button></li>
+        <li><button type="button" data-id="360" data-cc="id" data-tag="Visited">Indonesia</button></li>
+        <li><button type="button" data-id="840" data-cc="us" data-tag="Visited">United States</button></li>
+        <li><button type="button" data-id="124" data-cc="ca" data-tag="Visited">Canada</button></li>
+      </ul></div>
+      <p class="sr-only" aria-live="polite" data-map-live></p>
+    </div>
   </div>
 </section>
 
-<section class="ledger-sec" id="beyond" style="padding-bottom:40px">
+<section class="beyond" id="beyond" data-island="Off the clock">
   <div class="wrap">
-    <span class="no">№ 08 · Beyond the business card</span>
-    <h2 data-split>The other half of the ticket.</h2>
+    <p class="lbl"><b>07</b>Off the clock</p>
+    <h2 data-split>Everything that isn't a spreadsheet.</h2>
   </div>
-  <div class="marquee">
-    <p class="sr-only">Interests: perfume, GTA and every big release, Cristiano Ronaldo, a large Nerf collection, food reviews, 23 countries.</p>
-    <div aria-hidden="true"><span>Perfume</span><span>GTA and every big release</span><span>Cristiano Ronaldo</span><span>A large Nerf collection</span><span>Food reviews</span><span>23 countries</span><span>Perfume</span><span>GTA and every big release</span><span>Cristiano Ronaldo</span><span>A large Nerf collection</span><span>Food reviews</span><span>23 countries</span></div>
+  <div class="velo" aria-hidden="true">
+    <div class="velo-row" data-velo="1"><span>Perfume · GTA · Cristiano Ronaldo · Nerf · Food reviews · 23 countries · </span><span>Perfume · GTA · Cristiano Ronaldo · Nerf · Food reviews · 23 countries · </span></div>
+    <div class="velo-row alt" data-velo="-1"><span>@babytalksback · @chestgangvlogs · @alwarqaa_ · </span><span>@babytalksback · @chestgangvlogs · @alwarqaa_ · </span><span>@babytalksback · @chestgangvlogs · @alwarqaa_ · </span><span>@babytalksback · @chestgangvlogs · @alwarqaa_ · </span></div>
   </div>
-  <div class="wrap tapes">
-    <div class="tape" data-reveal><span class="reel" aria-hidden="true"><i></i><i></i></span><h3>Baby Talks Back</h3><span class="mono">@babytalksback</span><p>The main channel. Podcast-style conversations, food reviews, friends and everyday chaos.</p></div>
-    <div class="tape" data-reveal><span class="reel" aria-hidden="true"><i></i><i></i></span><h3>Chestgangvlogs</h3><span class="mono">@chestgangvlogs</span><p>The earlier chapter, before it became Baby Talks Back.</p></div>
-    <div class="tape" data-reveal><span class="reel" aria-hidden="true"><i></i><i></i></span><h3>Al Warqaa</h3><span class="mono">@alwarqaa_</span><p>My photography channel.</p></div>
+  <div class="wrap">
+    <div class="bounce" data-bounce>
+      <article class="bc bc-1" tabindex="0"><p class="mono">Fragrance</p><h3>Perfume</h3><p>Big perfume person. Ask me for a recommendation, then clear your afternoon.</p></article>
+      <article class="bc bc-2" tabindex="0"><p class="mono">Gaming</p><h3>GTA &amp; co.</h3><p>GTA and every big release. I play to win, which won't surprise anyone who has read this far.</p></article>
+      <article class="bc bc-3" tabindex="0"><p class="mono">Football</p><h3>Cristiano Ronaldo</h3><p>Happy to discuss it. Not going to change my mind.</p></article>
+      <article class="bc bc-4" tabindex="0"><p class="mono">Collection</p><h3>Nerf</h3><p>A large Nerf blaster collection. Grown-up? Debatable.</p></article>
+    </div>
+    <div class="tapes">
+      <article class="tape tape-main"><p class="mono">@babytalksback</p><h3>Baby Talks Back</h3><p>My main channel and the loudest version of me: podcast-style conversations, food reviews with friends, everyday life.</p></article>
+      <article class="tape"><p class="mono">@chestgangvlogs</p><h3>Chestgangvlogs</h3><p>Where it started, before it grew into Baby Talks Back.</p></article>
+      <article class="tape"><p class="mono">@alwarqaa_</p><h3>Al Warqaa</h3><p>Was my photography channel, back when I let the pictures do the talking.</p></article>
+    </div>
   </div>
 </section>
 
-<section class="ledger-sec" id="contact">
+<section class="contact" id="contact" data-island="Contact">
+  <div class="globe" data-globe aria-hidden="true"></div>
   <div class="wrap">
     <div class="admit">
-      <div>
-        <span class="no">№ 09 · Contact</span>
-        <h2 data-split>Say hello.</h2>
-        <p class="lede" style="margin-bottom:24px">Business enquiries, partnerships, collaborations. Perfume debates welcome.</p>
-        <!-- email, LinkedIn and channel links go here once supplied -->
-        <p class="handles"><span>@babytalksback</span><span>@alwarqaa_</span><span>@chestgangvlogs</span></p>
+      <div class="admit-main">
+        <p class="lbl lbl-ink"><b>08</b>Contact</p>
+        <h2 data-split>Your move.</h2>
+        <p class="lede">Business enquiries, partnerships and collaborations. Perfume recommendations and Ronaldo debates also accepted.</p>
+        <!-- email and LinkedIn buttons go here once supplied; links render only when they exist -->
+        <p class="handles"><span data-magnet>@babytalksback</span><span data-magnet>@alwarqaa_</span><span data-magnet>@chestgangvlogs</span></p>
       </div>
-      <div class="side" aria-hidden="true">Admit one</div>
+      <div class="admit-side">
+        <p class="mono">Local time</p>
+        <p class="clock" data-uae-time>12:00</p>
+        <p class="mono">UAE · GMT+4</p>
+      </div>
     </div>
   </div>
 </section>
 </main>
-<footer><div class="wrap">© 2026 Manasseh Baby John</div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-<script src="assets/main.js"></script>
+<footer class="foot-bar"><div class="wrap"><span>© 2026 Manasseh Baby John</span><span>Age at time of reading: <b data-age-mini>26.0233</b></span></div></footer>
+
+<nav class="island" data-island-nav aria-label="Quick navigation">
+  <button class="island-pill" type="button" aria-expanded="false" aria-controls="island-panel" data-island-toggle>
+    <svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15"/><circle class="ring-fill" cx="18" cy="18" r="15" pathLength="100"/></svg>
+    <span class="island-now" data-island-now>Origin story</span>
+    <span class="island-age mono" data-age-mini>26.0233</span>
+  </button>
+  <div class="island-panel" id="island-panel" hidden>
+    <ul>
+      <li><a href="#story">Origin story</a></li><li><a href="#council">High scores</a></li><li><a href="#twist">Plot twist</a></li><li><a href="#work">The work</a></li>
+      <li><a href="#ventures">Ventures</a></li><li><a href="#passport">Passport</a></li><li><a href="#beyond">Off the clock</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="mono"><span>UAE <b data-uae-time>12:00</b></span><span>Level 27 in <b data-cd-short>356d</b></span></p>
+  </div>
+</nav>
+<div class="toast" role="status" data-toast hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrambleTextPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/DrawSVGPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/MotionPathPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/Draggable.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/InertiaPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/CustomEase.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/CustomWiggle.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/CustomBounce.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" defer></script>
+<script src="assets/main.js" defer></script>
 </body>
 </html>
