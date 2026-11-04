@@ -148,6 +148,10 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 
 /* ---------- 04 work ---------- */
 .flapwrap { background:var(--navy); color:var(--paper); border-radius:20px; padding:clamp(18px,3vw,36px); margin-top:30px; }
+.flap-top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #2F4C73; }
+.flap-top .mono { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:#A9B6C8; }
+.tetr-logo { height:clamp(38px,4.4vw,52px); width:auto; }
+.tetr-logo.sm { height:30px; align-self:flex-start; margin-bottom:12px; }
 .flap { width:100%; border-collapse:separate; border-spacing:0 8px; }
 .flap caption { caption-side:top; text-align:left; display:flex; justify-content:space-between; font:700 .8rem var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--yellow); padding-bottom:8px; }
 .flap thead th { font:700 .66rem var(--mono); letter-spacing:.1em; text-transform:uppercase; color:#A9B6C8; text-align:left; padding:0 6px; }
@@ -227,6 +231,7 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .vfill { flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; margin-top:8px; }
 .vfill .mono { font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
 .fixtures { display:flex; flex-wrap:wrap; gap:6px; }
+.fixtures + .mono { margin-top:4px; }
 .fixtures li { font:700 .75rem var(--mono); border:1.5px solid var(--ink); border-radius:999px; padding:5px 11px; }
 .fixtures li.on { background:var(--ink); color:var(--paper); }
 .fixtures li span { margin-left:6px; color:var(--yellow); }
