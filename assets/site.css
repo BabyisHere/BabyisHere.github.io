@@ -197,24 +197,78 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .tix .when { font:700 .75rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
 .tix h4 { font:800 1.55rem/1.05 var(--display); letter-spacing:-.01em; margin-top:6px; }
 .tix .role { font-weight:700; font-size:.95rem; line-height:1.35; }
-.tix p:not(.when):not(.role):not(.t-foot) { font-size:.95rem; line-height:1.5; }
-.t-foot { margin-top:auto; padding-top:14px; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; opacity:.75; }
-.t-transit { background:var(--mint); color:var(--ink); }
-.punch { position:absolute; right:18px; top:20px; display:flex; gap:6px; }
-.punch i { width:11px; height:11px; border-radius:50%; background:var(--paper); }
-.t-label { background:#fff; color:var(--ink); border:2px solid var(--ink); }
-.lbl-top { display:flex; justify-content:space-between; font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:8px; }
-.t-label .barcode { margin-top:auto; height:44px; background:repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 7px, transparent 7px 9px, var(--ink) 9px 10px, transparent 10px 13px); }
-.t-lanyard { background:var(--navy); color:var(--paper); transform-origin:50% -60px; }
-.strap { position:absolute; left:50%; top:-64px; width:26px; height:72px; translate:-50% 0; background:var(--tomato); border-radius:4px; }
+.tix > p:not(.when):not(.role):not(.trk) { font-size:.95rem; line-height:1.5; }
+.tix { box-shadow:0 1px 0 rgba(0,0,0,.06), 0 22px 40px -22px rgba(20,22,26,.45); transition:translate .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+@media (hover:hover) { .tix:hover { translate:0 -6px; box-shadow:0 1px 0 rgba(0,0,0,.06), 0 30px 50px -22px rgba(20,22,26,.55); } }
+.grain { background-image:radial-gradient(rgba(20,22,26,.05) 1px, transparent 1.3px); background-size:5px 5px; }
+
+/* Ontime: tram ticket with notches, route line and a validation stamp */
+.t-transit { background-color:var(--mint); color:var(--ink); background-image:radial-gradient(rgba(20,22,26,.06) 1px, transparent 1.3px); background-size:5px 5px;
+  -webkit-mask:radial-gradient(circle 10px at 0 72%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 10px at 100% 72%, transparent 98%, #000) right / 51% 100% no-repeat;
+  mask:radial-gradient(circle 10px at 0 72%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 10px at 100% 72%, transparent 98%, #000) right / 51% 100% no-repeat; }
+.tx-head { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; padding-bottom:10px; margin-bottom:6px; border-bottom:2px solid var(--ink); }
+.punch { display:flex; gap:6px; }
+.punch i { width:11px; height:11px; border-radius:50%; background:var(--paper); box-shadow:inset 0 1px 2px rgba(0,0,0,.3); }
+.tram-line { margin-top:auto; padding-top:16px; width:100%; height:auto; }
+.tram-line path { stroke:var(--ink); stroke-width:4; }
+.tram-line circle { fill:var(--paper); stroke:var(--ink); stroke-width:3; }
+.tram-line .end { fill:var(--ink); }
+.tx-foot { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:10px; }
+.tx-foot .mono { font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; }
+.tx-foot b, .pass-foot b { display:block; font:800 1rem var(--display); letter-spacing:0; text-transform:none; }
+.validated { display:grid; place-items:center; width:76px; height:76px; border-radius:50%; border:3px double var(--navy); color:var(--navy); font-size:.54rem; text-transform:uppercase; letter-spacing:.06em; rotate:-14deg; text-align:center; line-height:1.1; opacity:.85; }
+.validated b { display:block; font:800 1.15rem var(--display); }
+
+/* Nike: shipping label */
+.t-label { background-color:#fff; color:var(--ink); border:2px solid var(--ink); background-image:radial-gradient(rgba(20,22,26,.04) 1px, transparent 1.3px); background-size:5px 5px; }
+.lb-grid { display:grid; grid-template-columns:1fr 1fr; border:2px solid var(--ink); margin-bottom:10px; }
+.lb-grid p { padding:7px 9px; font-size:.75rem; font-weight:700; line-height:1.3; }
+.lb-grid p:nth-child(odd) { border-right:2px solid var(--ink); }
+.lb-grid p:nth-child(-n+2) { border-bottom:2px solid var(--ink); }
+.lb-grid small { display:block; font-size:.58rem; font-weight:500; text-transform:uppercase; letter-spacing:.1em; color:var(--mute); margin-bottom:2px; }
+.arrows { display:inline-block; width:14px; height:12px; margin-right:6px; vertical-align:-1px; background:linear-gradient(var(--ink),var(--ink)) 3px 4px / 2px 8px no-repeat, linear-gradient(var(--ink),var(--ink)) 9px 4px / 2px 8px no-repeat, conic-gradient(from 135deg at 4px 0, var(--ink) 90deg, transparent 0) 0 0 / 8px 5px no-repeat, conic-gradient(from 135deg at 4px 0, var(--ink) 90deg, transparent 0) 6px 0 / 8px 5px no-repeat; }
+.t-label .barcode { margin-top:auto; height:48px; background:repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 7px, transparent 7px 9px, var(--ink) 9px 10px, transparent 10px 13px, var(--ink) 13px 16px, transparent 16px 17px); }
+.trk { display:flex; justify-content:space-between; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; margin-top:6px; }
+
+/* EXPO: holographic lanyard pass */
+.t-lanyard { background:var(--navy); color:var(--paper); transform-origin:50% -60px; overflow:visible; }
+.strap { position:absolute; left:50%; top:-66px; width:30px; height:76px; translate:-50% 0; background:var(--tomato); border-radius:4px; overflow:hidden; display:grid; place-items:center; }
+.strap span { writing-mode:vertical-rl; font:700 .5rem var(--mono); letter-spacing:.12em; color:var(--ink); white-space:nowrap; }
 .strap::after { content:''; position:absolute; left:50%; bottom:6px; width:12px; height:12px; translate:-50% 0; border-radius:50%; background:var(--paper); box-shadow:inset 0 0 0 3px var(--ink); }
-.t-staff { background:var(--paper-2); color:var(--ink); border:2px solid var(--navy); }
-.t-staff .band { margin:-24px -24px 14px; padding:8px 24px; background:var(--navy); color:var(--paper); border-radius:14px 14px 0 0; font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; }
-.t-board { background:var(--ink); color:var(--paper); }
+.holo { height:8px; margin:-24px -24px 16px; border-radius:16px 16px 0 0; background:linear-gradient(100deg, #FF4B2B, #FFC933, #4FD1B5, #7FA7FF, #FF4B2B); background-size:200% 100%; animation:holo 6s linear infinite; }
+@keyframes holo { to { background-position:200% 0; } }
+.pass-top { display:flex; align-items:center; gap:14px; }
+.avatar { display:grid; place-items:center; flex:none; width:54px; height:54px; border-radius:12px; font-weight:700; font-size:.85rem; letter-spacing:.06em; }
+.t-lanyard .avatar { background:var(--paper); color:var(--navy); }
+.t-lanyard h4 { margin-top:2px; }
+.pass-foot { margin-top:auto; padding-top:16px; display:flex; align-items:center; gap:14px; border-top:1px solid #34527A; }
+.pass-foot .mono { font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; color:#C5CFDB; }
+.qr { width:56px; height:56px; padding:4px; background:var(--paper); border-radius:6px; flex:none; }
+.qr rect { fill:var(--navy); }
+
+/* Heriot-Watt: staff ID card */
+.t-staff { background-color:var(--paper-2); color:var(--ink); border:2px solid var(--navy); overflow:hidden; background-image:radial-gradient(rgba(31,58,95,.06) 1px, transparent 1.3px); background-size:5px 5px; }
+.t-staff .band { display:flex; justify-content:space-between; gap:12px; margin:-24px -24px 14px; padding:9px 24px; background:var(--navy); color:var(--paper); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; }
+.id-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.chip { width:42px; height:32px; border-radius:6px; background:linear-gradient(135deg, #E9C46A, #C9A13B); box-shadow:inset 0 0 0 1px rgba(0,0,0,.25); background-image:linear-gradient(90deg, transparent 45%, rgba(0,0,0,.25) 45% 55%, transparent 55%), linear-gradient(transparent 45%, rgba(0,0,0,.25) 45% 55%, transparent 55%), linear-gradient(135deg, #E9C46A, #C9A13B); }
+.t-staff .avatar { background:var(--navy); color:var(--paper); width:48px; height:48px; border-radius:50%; }
+.magstripe { margin:16px -24px -24px; height:22px; background:var(--ink); margin-top:auto; }
+.t-staff p:last-of-type { margin-bottom:16px; }
+
+/* TETR: boarding pass */
+.t-board { background:var(--ink); color:var(--paper);
+  -webkit-mask:radial-gradient(circle 10px at 0 62%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 10px at 100% 62%, transparent 98%, #000) right / 51% 100% no-repeat;
+  mask:radial-gradient(circle 10px at 0 62%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 10px at 100% 62%, transparent 98%, #000) right / 51% 100% no-repeat; }
+.bp-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.bp-head .mono { font-size:.62rem; text-transform:uppercase; letter-spacing:.16em; color:var(--yellow); }
+.bp-head .tetr-logo.sm { margin:0; }
 .bp { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:.66rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mute-d); padding-bottom:12px; margin-bottom:8px; border-bottom:1px solid #3A3D45; }
-.bp b { display:block; font:800 1.15rem var(--display); letter-spacing:0; color:var(--yellow); }
-.bp .plane { flex:1; height:2px; background:#3A3D45; position:relative; }
+.bp b { display:block; font:800 1.5rem var(--display); letter-spacing:0; color:var(--yellow); }
+.bp .plane { flex:1; height:2px; background:repeating-linear-gradient(90deg, #5C6270 0 6px, transparent 6px 10px); position:relative; }
 .bp .plane::after { content:''; position:absolute; right:-2px; top:-5px; border-left:11px solid var(--yellow); border-block:6px solid transparent; }
+.bp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0; padding:10px 0; border-block:1px solid #3A3D45; }
+.bp-grid p { font-size:.8rem; font-weight:700; color:var(--paper); }
+.bp-grid small { display:block; font-size:.56rem; font-weight:500; text-transform:uppercase; letter-spacing:.14em; color:var(--mute-d); }
 @media (max-width:640px) { .track-clip { padding-top:66px; } .track { row-gap:80px; } }
 
 /* ---------- 05 ventures ---------- */

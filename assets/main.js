@@ -340,11 +340,11 @@ async function boot() {
     const dist = () => Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
     const tween = gsap.to(track, { x: () => -dist(), ease: 'none',
       scrollTrigger: { trigger: '.track-clip', start: 'center center', end: () => `+=${dist()}`, pin: true, scrub: 1, invalidateOnRefresh: true } });
-    gsap.from('[data-lanyard]', { rotate: 9, duration: 1.8, ease: 'swing', scrollTrigger: { trigger: '[data-lanyard]', containerAnimation: tween, start: 'left 85%', once: true } });
+    gsap.to('[data-lanyard]', { rotate: 9, duration: 1.8, ease: 'swing', scrollTrigger: { trigger: '[data-lanyard]', containerAnimation: tween, start: 'left 85%', once: true } });
     return () => route.classList.remove('is-pinned');
   });
   mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
-    gsap.from('[data-lanyard]', { rotate: 7, duration: 1.8, ease: 'swing', scrollTrigger: once('[data-lanyard]', 'top 85%') });
+    gsap.to('[data-lanyard]', { rotate: 7, duration: 1.8, ease: 'swing', scrollTrigger: once('[data-lanyard]', 'top 85%') });
   });
 
   // bounce cards fan out when they come into view; hover lifts one
