@@ -121,7 +121,8 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .board td { padding:14px 12px; border-bottom:1px solid var(--rule); vertical-align:baseline; }
 .board td:first-child { font:800 clamp(1.3rem,2.4vw,1.9rem)/1 var(--display); color:var(--tomato-t); width:8.5ch; white-space:nowrap; }
 .board td:nth-child(2) { font-weight:600; font-size:clamp(1rem,1.5vw,1.15rem); }
-.board td:last-child { font:700 .8rem var(--mono); color:var(--navy); text-align:right; }
+.board td:last-child { font:800 clamp(1rem,1.8vw,1.35rem) var(--mono); letter-spacing:.12em; color:var(--navy); text-align:center; }
+.board th:last-child { text-align:center; }
 @media (max-width:560px) { .board th:last-child, .board td:last-child { display:none; } }
 
 /* ---------- 03 plot twist ---------- */
@@ -218,10 +219,16 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 
 /* ---------- 05 ventures ---------- */
 .ventures { background:var(--ink); color:var(--paper); }
-.vgrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:34px; align-items:stretch; perspective:1200px; }
+.vgrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin-top:34px; align-items:stretch; perspective:1200px; }
 .vt { position:relative; border-radius:20px; padding:26px 26px 0; display:flex; flex-direction:column; gap:12px; overflow:hidden; transform-style:preserve-3d; }
 .vt-m2 { background:var(--yellow); color:var(--ink); }
 .vt-tr { background:var(--mint); color:var(--ink); }
+.vt-gen { background:var(--navy); color:var(--paper); }
+.vt-gen .vfill { position:relative; min-height:120px; }
+.vt-gen .vfill::before { content:'XAU'; position:absolute; right:-4px; top:-10px; font:800 clamp(4.5rem,8vw,7rem)/1 var(--display); color:transparent; -webkit-text-stroke:2px rgba(255,201,51,.45); letter-spacing:.02em; pointer-events:none; }
+.vt-gen .fixtures li { border-color:var(--paper); }
+.vt-gen .fixtures li.on { background:var(--yellow); color:var(--ink); border-color:var(--yellow); }
+.vt-gen .vstub { background-image:radial-gradient(circle, var(--paper) 2.6px, transparent 3.2px); }
 .vt-next { background:transparent; color:var(--paper); border:2px dashed #5C6270; }
 .vstamp { align-self:flex-start; font:700 .7rem var(--mono); letter-spacing:.08em; text-transform:uppercase; background:var(--ink); color:var(--paper); padding:6px 10px; border-radius:4px; }
 .vt-next .vstamp { background:var(--paper); color:var(--ink); }
@@ -247,7 +254,7 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .vstub { --hole:var(--ink); margin:18px -26px 0; padding:16px 26px; display:flex; justify-content:space-between; font:700 .8rem var(--mono); text-transform:uppercase; letter-spacing:.06em; text-decoration:none; background-image:radial-gradient(circle, var(--ink) 2.6px, transparent 3.2px); background-size:14px 8px; background-repeat:repeat-x; background-position:0 -2px; }
 .vt-next .vstub { background-image:radial-gradient(circle, #5C6270 2px, transparent 2.6px); }
 a.vstub:hover { text-decoration:underline; }
-@media (max-width:1023px) { .vgrid { grid-template-columns:repeat(2,minmax(0,1fr)); } .vt-next { grid-column:1 / -1; } }
+
 @media (max-width:640px) { .vgrid { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; margin-inline:calc(-1 * clamp(16px,4vw,48px)); padding-inline:clamp(16px,4vw,48px); padding-bottom:10px; } .vt { flex:0 0 85%; scroll-snap-align:center; } }
 
 /* ---------- 06 passport ---------- */
@@ -262,6 +269,7 @@ a.vstub:hover { text-decoration:underline; }
 .m-visit { fill:#F4A897; stroke:var(--paper); stroke-width:.6; }
 .m-work { fill:var(--navy); stroke:var(--yellow); stroke-width:1.2; }
 .m-home { fill:var(--yellow); stroke:var(--ink); stroke-width:1.2; }
+.m-next { fill:#F6E7B4; stroke:var(--ink); stroke-width:.7; stroke-dasharray:3 2; }
 .m-countries path { transition:opacity .3s, fill .2s; cursor:default; }
 .m-countries path.is-hot { stroke:var(--ink); stroke-width:1.8; }
 .m-arc { fill:none; stroke:var(--tomato-t); stroke-width:.9; opacity:.45; }
@@ -276,6 +284,9 @@ a.vstub:hover { text-decoration:underline; }
 @keyframes pulse { from { transform:scale(1); opacity:.9; } to { transform:scale(2.6); opacity:0; } }
 .map[data-show="work"] .m-visit, .map[data-show="work"] .m-arc:not(.is-work), .map[data-show="work"] .m-dot:not(.is-work) { opacity:.15; }
 .map[data-show="visit"] .m-arc { opacity:.12; }
+.map[data-show="next"] .m-visit, .map[data-show="next"] .m-work, .map[data-show="next"] .m-arc, .map[data-show="next"] .m-dot { opacity:.15; }
+.map[data-show="next"] .m-next { fill:var(--yellow); }
+.map[data-show="work"] .m-next, .map[data-show="visit"] .m-next { opacity:.3; }
 .map[data-show="visit"] .m-work { fill:#F4A897; stroke:var(--paper); }
 .m-tip { position:absolute; left:0; top:0; z-index:5; pointer-events:none; display:flex; align-items:center; gap:10px; background:var(--paper); border:2px solid var(--ink); border-radius:10px; padding:8px 12px; box-shadow:4px 4px 0 var(--ink); white-space:nowrap; }
 .m-tip b { display:block; font:800 1rem/1.1 var(--display); }
@@ -289,6 +300,7 @@ a.vstub:hover { text-decoration:underline; }
 .chipgroup button { display:inline-flex; align-items:center; gap:8px; padding:5px 12px 5px 6px; border:1.5px solid var(--ink); border-radius:999px; background:var(--paper); font-weight:600; font-size:.9rem; cursor:pointer; }
 .chipgroup button:hover, .chipgroup button:focus-visible, .chipgroup button.is-hot { background:var(--ink); color:var(--paper); }
 .chipgroup:nth-child(2) button { border-color:var(--navy); }
+.chip-next button { border-style:dashed; }
 
 /* ---------- 07 off the clock ---------- */
 .beyond { background:var(--paper-2); overflow:hidden; }
