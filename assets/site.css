@@ -225,7 +225,9 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .vt-tr { background:var(--mint); color:var(--ink); }
 .vt-gen { background:var(--navy); color:var(--paper); }
 .vt-gen .vfill { position:relative; min-height:120px; }
-.vt-gen .vfill::before { content:'XAU'; position:absolute; right:-4px; top:-10px; font:800 clamp(4.5rem,8vw,7rem)/1 var(--display); color:transparent; -webkit-text-stroke:2px rgba(255,201,51,.45); letter-spacing:.02em; pointer-events:none; }
+.vt-gen .vfill-dash { border-color:#4A6489; }
+.vt-gen .vfill-dash .mono { color:#C5CFDB; }
+.vt-gen .vfill::before { content:'CLASSIFIED'; font-size:clamp(2.6rem,4.4vw,3.8rem) !important; bottom:6px; top:auto !important; rotate:-8deg; position:absolute; right:-4px; top:-10px; font:800 clamp(4.5rem,8vw,7rem)/1 var(--display); color:transparent; -webkit-text-stroke:2px rgba(255,201,51,.45); letter-spacing:.02em; pointer-events:none; }
 .vt-gen .fixtures li { border-color:var(--paper); }
 .vt-gen .fixtures li.on { background:var(--yellow); color:var(--ink); border-color:var(--yellow); }
 .vt-gen .vstub { background-image:radial-gradient(circle, var(--paper) 2.6px, transparent 3.2px); }
