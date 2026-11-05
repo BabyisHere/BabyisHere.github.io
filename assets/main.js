@@ -4,9 +4,13 @@ const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const once = (trigger, start = 'top 85%') => ({ trigger, start, once: true });
+// Below-the-fold elements start hidden; ones already on screen animate at once. Starting visible and hiding at the
+// trigger made content blink when you scrolled to it.
+const later = t => gsap.utils.toArray(t).every(e => e.getBoundingClientRect().top > innerHeight);
 const flag = cc => `https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${cc}.svg`;
 
 gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin, DrawSVGPlugin, MotionPathPlugin, Draggable, InertiaPlugin, CustomEase, CustomWiggle, CustomBounce);
+ScrollTrigger.config({ ignoreMobileResize: true }); // the phone address bar hiding mustn't re-measure mid-scroll
 CustomWiggle.create('shake', { wiggles: 8, type: 'easeOut' });
 CustomWiggle.create('swing', { wiggles: 5, type: 'easeOut' });
 CustomBounce.create('drop', { strength: .55, squash: 2 });
@@ -208,9 +212,9 @@ async function passport() {
     box.dataset.show = b.dataset.layer;
   }));
   if (!reduce) {
-    gsap.from($$('.m-arc', svg), { drawSVG: 0, duration: 1.4, stagger: .05, ease: 'power2.out', immediateRender: false, scrollTrigger: once(box, 'top 70%') });
-    gsap.from($$('.m-dot, .m-pin', svg), { scale: 0, transformOrigin: '50% 50%', stagger: .03, duration: .5, ease: 'back.out(3)', immediateRender: false, scrollTrigger: once(box, 'top 70%') });
-    gsap.from(chips, { scale: 1.5, rotate: () => gsap.utils.random(-6, 6), autoAlpha: 0, stagger: .025, duration: .45, ease: 'back.out(2)', immediateRender: false, scrollTrigger: once('.chips', 'top 90%') });
+    gsap.from($$('.m-arc', svg), { drawSVG: 0, duration: 1.4, stagger: .05, ease: 'power2.out', immediateRender: later(box), scrollTrigger: once(box, 'top 70%') });
+    gsap.from($$('.m-dot, .m-pin', svg), { scale: 0, transformOrigin: '50% 50%', stagger: .03, duration: .5, ease: 'back.out(3)', immediateRender: later(box), scrollTrigger: once(box, 'top 70%') });
+    gsap.from(chips, { scale: 1.5, rotate: () => gsap.utils.random(-6, 6), autoAlpha: 0, stagger: .025, duration: .45, ease: 'back.out(2)', immediateRender: later('.chips'), scrollTrigger: once('.chips', 'top 90%') });
   }
   ScrollTrigger.refresh();
 }
@@ -368,9 +372,9 @@ function motion(mm) {
   // headings split into lines; text stays visible until its trigger fires
   $$('[data-split]').forEach(el => {
     const { lines } = SplitText.create(el, { type: 'lines', mask: 'lines' });
-    gsap.from(lines, { yPercent: 110, duration: 1, stagger: .09, ease: 'expo.out', immediateRender: false, scrollTrigger: once(el, 'top 90%') });
+    gsap.from(lines, { yPercent: 110, duration: 1, stagger: .09, ease: 'expo.out', immediateRender: later(el), scrollTrigger: once(el, 'top 90%') });
   });
-  $$('[data-reveal]').forEach(el => gsap.from(el, { y: 28, autoAlpha: 0, duration: .8, ease: 'power3.out', immediateRender: false, scrollTrigger: once(el, 'top 92%') }));
+  $$('[data-reveal]').forEach(el => gsap.from(el, { y: 28, autoAlpha: 0, duration: .8, ease: 'power3.out', immediateRender: later(el), scrollTrigger: once(el, 'top 92%') }));
 
   // hero: the name squeezes into shape, the halves close, the stub prints
   const { chars } = SplitText.create('[data-name]', { type: 'words,chars' });
@@ -386,16 +390,16 @@ function motion(mm) {
     onPress: () => gsap.to(peel, { scale: 1.08, rotate: -3, duration: .2 }), onRelease: () => gsap.to(peel, { scale: 1, rotate: 4, duration: .4, ease: 'back.out(3)' }) });
 
   // origin: the 12 lands, the ×2 sticker drops in, raffle tickets print
-  gsap.from('.big12', { scale: .6, autoAlpha: 0, duration: 1, ease: 'back.out(1.6)', immediateRender: false, scrollTrigger: once('.big12', 'top 80%') });
-  gsap.from('[data-x2]', { y: -160, rotate: -30, duration: 1.3, ease: 'drop', immediateRender: false, scrollTrigger: once('.big12', 'top 75%') });
-  gsap.from('[data-raffle]', { clipPath: 'inset(0 100% 0 0)', duration: .8, stagger: .3, ease: 'power3.out', immediateRender: false, scrollTrigger: once('.raffles', 'top 90%') });
+  gsap.from('.big12', { scale: .6, autoAlpha: 0, duration: 1, ease: 'back.out(1.6)', immediateRender: later('.big12'), scrollTrigger: once('.big12', 'top 80%') });
+  gsap.from('[data-x2]', { y: -160, rotate: -30, duration: 1.3, ease: 'drop', immediateRender: later('.big12'), scrollTrigger: once('.big12', 'top 75%') });
+  gsap.from('[data-raffle]', { clipPath: 'inset(0 100% 0 0)', duration: .8, stagger: .3, ease: 'power3.out', immediateRender: later('.raffles'), scrollTrigger: once('.raffles', 'top 90%') });
 
   // high scores resolve row by row
   $$('[data-scramble]').forEach((td, i) => gsap.to(td, { duration: 1, delay: i * .12, scrambleText: { text: td.textContent, chars: 'XO0123456789', speed: .5 }, scrollTrigger: once('.board', 'top 80%') }));
 
   // plot twist: wins tick in, the stamp slams, the card shakes, the room flashes, the continue counter runs
   gsap.timeline({ scrollTrigger: once('[data-ballot]', 'top 65%') })
-    .from('[data-ballot] li', { x: -20, autoAlpha: 0, stagger: .15, duration: .4, immediateRender: false })
+    .from('[data-ballot] li', { x: -20, autoAlpha: 0, stagger: .15, duration: .4, immediateRender: later('[data-ballot]') })
     .from('[data-stamp]', { scale: 3, autoAlpha: 0, duration: .45, ease: 'back.out(1.4)' }, '+=.25')
     .to('[data-ballot]', { x: 12, duration: .6, ease: 'shake' }, '<.3')
     .to('.twist', { backgroundColor: '#FF4B2B', duration: .12, yoyo: true, repeat: 1 }, '<')
@@ -403,12 +407,14 @@ function motion(mm) {
     .to('[data-continue] .btn', { scale: 1.06, duration: .25, yoyo: true, repeat: 3 });
 
   // career rail: the axis draws, bars grow in date order
-  gsap.from('[data-axis]', { drawSVG: 0, duration: 1.2, ease: 'power2.out', immediateRender: false, scrollTrigger: once('.rail', 'top 85%') });
-  gsap.from('.bar', { scaleX: 0, duration: .7, stagger: .12, ease: 'power3.out', immediateRender: false, scrollTrigger: once('.rail', 'top 85%') });
+  gsap.from('[data-axis]', { drawSVG: 0, duration: 1.2, ease: 'power2.out', immediateRender: later('.rail'), scrollTrigger: once('.rail', 'top 85%') });
+  gsap.from('.bar', { scaleX: 0, duration: .7, stagger: .12, ease: 'power3.out', immediateRender: later('.rail'), scrollTrigger: once('.rail', 'top 85%') });
 
   // ventures deal in; Trovea's flow draws; tilt on fine pointers
-  ScrollTrigger.batch('.vt', { once: true, start: 'top 85%', onEnter: b => gsap.from(b, { y: 70, rotate: i => (i - 1) * 4, autoAlpha: 0, stagger: .15, duration: .9, ease: 'back.out(1.3)' }) });
-  gsap.from('[data-flowline]', { drawSVG: 0, duration: 1.2, ease: 'power2.inOut', immediateRender: false, scrollTrigger: once('.flow', 'top 90%') });
+  const vts = $$('.vt').filter(v => later(v));
+  gsap.set(vts, { y: 70, rotate: i => (i - 1) * 4, autoAlpha: 0 });
+  ScrollTrigger.batch(vts, { once: true, start: 'top 85%', onEnter: b => gsap.to(b, { y: 0, rotate: 0, autoAlpha: 1, stagger: .15, duration: .9, ease: 'back.out(1.3)' }) });
+  gsap.from('[data-flowline]', { drawSVG: 0, duration: 1.2, ease: 'power2.inOut', immediateRender: later('.flow'), scrollTrigger: once('.flow', 'top 90%') });
   if (fine) $$('[data-tilt]').forEach(card => {
     const rx = gsap.quickTo(card, 'rotationX', { duration: .4 }), ry = gsap.quickTo(card, 'rotationY', { duration: .4 });
     card.addEventListener('pointermove', e => { const r = card.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 10); rx(-((e.clientY - r.top) / r.height - .5) * 10); });
