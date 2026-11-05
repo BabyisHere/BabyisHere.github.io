@@ -146,7 +146,7 @@ async function passport() {
   const INFO = new Map(chips.map(b => [b.dataset.id, { cc: b.dataset.cc, name: b.textContent.trim(), tag: b.dataset.tag, btn: b }]));
   chips.forEach(b => b.insertAdjacentHTML('afterbegin', `<img src="${flag(b.dataset.cc)}" alt="" width="22" height="16" loading="lazy">`));
   try {
-    const res = await fetch('assets/map.svg');
+    const res = await fetch('assets/map.svg?v=3') /* bump v when the map is rebuilt, so browsers drop the cached copy */;
     if (!res.ok) throw new Error(res.status);
     box.innerHTML = await res.text();
   } catch { return; } // the flag chips below still list every country
