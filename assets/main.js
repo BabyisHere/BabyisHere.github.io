@@ -328,11 +328,11 @@ async function boot() {
     if (e.shiftKey && i <= 0) { e.preventDefault(); f.at(-1).focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
   });
 
-  // rotating Arcade phrase (ReactBits Rotating Text); with reduced motion the full sentence stays
-  const rot = $('[data-rot]'), phrases = rot.dataset.phrases.split('|');
+  // rotating Arcade phrase (ReactBits Rotating Text), shuffled per visit; with reduced motion one random line stays
+  const rot = $('[data-rot]'), phrases = gsap.utils.shuffle(rot.dataset.phrases.split('|'));
+  rot.textContent = phrases[0];
   if (!reduce) {
     let n = 0;
-    rot.textContent = phrases[0];
     setInterval(() => {
       n = (n + 1) % phrases.length;
       gsap.to(rot, { yPercent: -30, autoAlpha: 0, duration: .22, ease: 'power2.in', onComplete: () => {
