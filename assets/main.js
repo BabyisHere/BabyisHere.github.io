@@ -281,6 +281,19 @@ function curvedLoop() {
     onPress() { dragging = true; }, onDrag() { off += this.deltaX * scale(); }, onRelease() { dragging = false; vel = -this.deltaX * scale() * .4; } });
 }
 
+const pressStart = () => { $('[data-count9]').closest('p').textContent = 'PRESS START'; };
+
+// career rail: the axis runs from 2019 to the current year and TETR's bar ends today, so neither goes stale
+function careerRail(now = Date.now()) {
+  const Y0 = 2019, yNow = new Date(now).getUTCFullYear(), span = yNow - Y0 + 1;
+  const rail = $('.rail');
+  rail.style.setProperty('--span', span);
+  $('.years', rail).innerHTML = Array.from({ length: span }, (_, i) => `<span>${Y0 + i}</span>`).join('');
+  $('.bar.tetr', rail).style.setProperty('--b', ((now - Date.UTC(Y0, 0, 1)) / (365.25 * 864e5)).toFixed(2));
+  $$('[data-year]').forEach(el => { el.textContent = yNow; });
+}
+careerRail();
+
 /* ---------- boot ---------- */
 async function boot() {
   await document.fonts.ready;
@@ -294,7 +307,10 @@ async function boot() {
   const island = $('[data-island-nav]'), pill = $('[data-island-toggle]'), panel = $('#island-panel'), now = $('[data-island-now]');
   // refreshPriority -1: measure these after the Work pin has added its scroll length
   ScrollTrigger.create({ trigger: '.hero', start: 'bottom 55%', end: 'max', refreshPriority: -1, onToggle: s => island.classList.toggle('is-on', s.isActive) });
-  ScrollTrigger.create({ start: 0, end: 'max', refreshPriority: -1, onUpdate: s => island.style.setProperty('--p', s.progress.toFixed(3)) });
+  ScrollTrigger.create({ start: 0, end: 'max', refreshPriority: -1, onUpdate: s => {
+    island.style.setProperty('--p', s.progress.toFixed(3));
+    island.classList.toggle('is-tucked', s.direction === 1 && panel.hidden);
+  } });
   $$('[data-island]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%', refreshPriority: -1, onToggle: s => {
     if (!s.isActive || now.textContent === sec.dataset.island) return;
     reduce ? (now.textContent = sec.dataset.island) : gsap.to(now, { duration: .5, scrambleText: { text: sec.dataset.island, chars: 'upperCase', speed: .7 } });
@@ -363,7 +379,7 @@ async function boot() {
     });
   });
 
-  if (!reduce) motion(mm);
+  if (!reduce) motion(mm); else pressStart();
   vantaGlobe();
   ScrollTrigger.refresh();
 }
@@ -403,7 +419,7 @@ function motion(mm) {
     .from('[data-stamp]', { scale: 3, autoAlpha: 0, duration: .45, ease: 'back.out(1.4)' }, '+=.25')
     .to('[data-ballot]', { x: 12, duration: .6, ease: 'shake' }, '<.3')
     .to('.twist', { backgroundColor: '#FF4B2B', duration: .12, yoyo: true, repeat: 1 }, '<')
-    .to({ n: 9 }, { n: 0, duration: 4.5, ease: 'none', onUpdate() { $('[data-count9]').textContent = Math.ceil(this.targets()[0].n); } }, '+=.3')
+    .to({ n: 9 }, { n: 0, duration: 4.5, ease: 'none', onUpdate() { $('[data-count9]').textContent = Math.ceil(this.targets()[0].n); }, onComplete: pressStart }, '+=.3')
     .to('[data-continue] .btn', { scale: 1.06, duration: .25, yoyo: true, repeat: 3 });
 
   // career rail: the axis draws, bars grow in date order
