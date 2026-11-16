@@ -293,6 +293,57 @@ function careerRail(now = Date.now()) {
 }
 careerRail();
 
+/* ---------- camera roll ring (ReactBits Rolling Gallery): drifts on its own; drag or use the arrows to spin ---------- */
+function rollRing(mm) {
+  const roll = $('[data-roll]'), stage = $('.roll-stage', roll), ring = $('[data-roll-ring]', roll), faces = $$('.print', ring);
+  const prev = $('[data-roll-prev]', roll), next = $('[data-roll-next]', roll);
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    roll.classList.add('is-ring');
+    const step = 360 / faces.length, st = { rot: 0 };
+    let vel = 0, dragging = false, hovering = false, visible = false, tween = null;
+    const layout = () => {
+      const fw = gsap.utils.clamp(140, 300, stage.clientWidth * .24);
+      roll.style.setProperty('--fw', `${fw}px`);
+      const r = Math.round(fw / 2 / Math.tan(Math.PI / faces.length)) + 14; // ring radius where neighbouring photos just clear each other
+      faces.forEach((f, i) => { f.style.transform = `rotateY(${i * step}deg) translateZ(${r}px)`; });
+      gsap.set(ring, { xPercent: -50, z: -r });
+    };
+    const draw = () => {
+      if (!visible) return;
+      if (!dragging && !tween) st.rot += (hovering ? 0 : -.06) + vel;
+      vel *= .94;
+      gsap.set(ring, { rotationY: st.rot });
+    };
+    const spin = dir => {
+      tween?.kill(); vel = 0;
+      tween = gsap.to(st, { rot: Math.round(st.rot / step) * step + dir * step, duration: .7, ease: 'power3.out', onComplete: () => { tween = null; } });
+    };
+    const onPrev = () => spin(1), onNext = () => spin(-1);
+    const onEnter = () => { hovering = fine; }, onLeave = () => { hovering = false; };
+    layout();
+    addEventListener('resize', layout);
+    gsap.ticker.add(draw);
+    prev.addEventListener('click', onPrev); next.addEventListener('click', onNext);
+    stage.addEventListener('pointerenter', onEnter); stage.addEventListener('pointerleave', onLeave);
+    // lazy loading never fires for photos turned away in 3D, so load them all once the ring nears the screen
+    const trig = ScrollTrigger.create({ trigger: stage, start: 'top bottom+=600', end: 'bottom top', onToggle: s => {
+      visible = s.isActive;
+      if (visible) faces.forEach(f => { $('img', f).loading = 'eager'; });
+    } });
+    const [drag] = Draggable.create(document.createElement('div'), { trigger: stage, type: 'x',
+      onPress() { dragging = true; vel = 0; tween?.kill(); tween = null; },
+      onDrag() { st.rot += this.deltaX * .25; },
+      onRelease() { dragging = false; vel = this.deltaX * .12; } });
+    return () => {
+      roll.classList.remove('is-ring'); roll.style.removeProperty('--fw');
+      removeEventListener('resize', layout); gsap.ticker.remove(draw); trig.kill(); drag.kill(); tween?.kill();
+      prev.removeEventListener('click', onPrev); next.removeEventListener('click', onNext);
+      stage.removeEventListener('pointerenter', onEnter); stage.removeEventListener('pointerleave', onLeave);
+      faces.forEach(f => { f.style.transform = ''; }); gsap.set(ring, { clearProps: 'transform' });
+    };
+  });
+}
+
 /* ---------- boot ---------- */
 async function boot() {
   await document.fonts.ready;
@@ -378,6 +429,7 @@ async function boot() {
     });
   });
 
+  rollRing(mm);
   if (!reduce) motion(mm); else pressStart();
   vantaGlobe();
   ScrollTrigger.refresh();
