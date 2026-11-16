@@ -472,3 +472,9 @@ a.vstub:hover { text-decoration:underline; }
 /* LinkedIn link in the Ledger half */
 .li-link { align-self:flex-start; font:700 .8rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--ink); background:var(--paper); padding:9px 15px; border-radius:999px; text-decoration:none; }
 .li-link:hover { background:var(--yellow); }
+
+/* TETR: two prints fanned beside the intro */
+.work-prints .print { width:clamp(120px,13vw,190px); }
+.work-prints .print:nth-child(1) { rotate:-4deg; margin:0; }
+.work-prints .print:nth-child(2) { rotate:5deg; margin:28px 0 0 -26px; }
+@media (max-width:820px) { .work-prints { justify-self:start; } }
