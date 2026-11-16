@@ -468,3 +468,7 @@ a.vstub:hover { text-decoration:underline; }
   .roll-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .pres-poster { margin-top:-10px; }
 }
+
+/* LinkedIn link in the Ledger half */
+.li-link { align-self:flex-start; font:700 .8rem var(--mono); text-transform:uppercase; letter-spacing:.06em; color:var(--ink); background:var(--paper); padding:9px 15px; border-radius:999px; text-decoration:none; }
+.li-link:hover { background:var(--yellow); }
