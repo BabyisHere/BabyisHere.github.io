@@ -14,7 +14,6 @@ ScrollTrigger.config({ ignoreMobileResize: true }); // the phone address bar hid
 CustomWiggle.create('shake', { wiggles: 8, type: 'easeOut' });
 CustomWiggle.create('swing', { wiggles: 5, type: 'easeOut' });
 CustomBounce.create('drop', { strength: .55, squash: 2 });
-CustomEase.create('snap', 'M0,0 C0.18,0 0.08,1 1,1');
 
 if (!reduce) {
   const lenis = new Lenis({ anchors: true }); // syncTouch stays off, so phones keep native scroll
@@ -396,7 +395,6 @@ function motion(mm) {
   const { chars } = SplitText.create('[data-name]', { type: 'words,chars' });
   gsap.timeline()
     .from(chars, { yPercent: 60, autoAlpha: 0, stagger: .025, duration: .7, ease: 'back.out(1.6)' })
-    .fromTo('[data-name]', { fontVariationSettings: "'wdth' 100" }, { fontVariationSettings: "'wdth' 78", duration: 1.1, ease: 'snap' }, 0)
     .from('.tk-ledger', { xPercent: -12, autoAlpha: 0, duration: .9, ease: 'expo.out' }, .2)
     .from('.tk-arcade', { xPercent: 12, autoAlpha: 0, duration: .9, ease: 'expo.out' }, .2)
     .from('.stub', { clipPath: 'inset(0 0 100% 0)', duration: .7, ease: 'power3.out' }, .75)

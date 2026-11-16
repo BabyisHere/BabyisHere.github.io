@@ -43,7 +43,7 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .topnav a { font:500 .8125rem var(--mono); text-transform:uppercase; text-decoration:none; }
 .topnav a:hover { color:var(--tomato-t); }
 @media (max-width:860px) { .topnav { display:none; } }
-.name { font:800 clamp(3.1rem,11.5vw,10.2rem)/.86 var(--display); font-variation-settings:'wdth' 78; letter-spacing:-.035em; margin:clamp(36px,6vw,80px) 0 30px; }
+.name { font:800 clamp(3.1rem,10.5vw,8.8rem)/.86 var(--display); font-variation-settings:'wdth' 78; letter-spacing:-.035em; margin:clamp(36px,6vw,80px) 0 30px; }
 .tk { display:flex; border-radius:22px 22px 0 0; overflow:hidden; box-shadow:0 30px 60px -20px rgba(20,22,26,.35); }
 .tk-half { flex:1 1 0; min-width:0; padding:clamp(22px,3.4vw,44px); display:flex; flex-direction:column; gap:22px; transition:flex-grow .5s cubic-bezier(.2,.8,.2,1); position:relative; }
 @media (hover:hover) { .tk-half:hover { flex-grow:1.2; } }
