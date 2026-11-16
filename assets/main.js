@@ -382,12 +382,24 @@ async function boot() {
   // rotating Arcade phrase (ReactBits Rotating Text), shuffled per visit; with reduced motion one random line stays
   const rot = $('[data-rot]'), phrases = gsap.utils.shuffle(rot.dataset.phrases.split('|'));
   rot.textContent = phrases[0];
+  // stickers under the line match its topic: they float, and swap with a pop when the line changes
+  const shelf = $('[data-stickers]');
+  const showStickers = line => {
+    gsap.killTweensOf(shelf.children);
+    shelf.innerHTML = stickersFor(line).map(x => `<span class="stk">${x}</span>`).join('');
+    if (reduce) return;
+    const kids = [...shelf.children];
+    gsap.from(kids, { scale: 0, rotate: () => gsap.utils.random(-40, 40), duration: .5, stagger: .07, ease: 'back.out(2.5)' });
+    kids.forEach((k, i) => gsap.to(k, { y: -10, rotate: gsap.utils.random(-10, 10), duration: gsap.utils.random(1.1, 1.7), delay: .5 + i * .15, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+  };
+  showStickers(phrases[0]);
   if (!reduce) {
     let n = 0;
     setInterval(() => {
       n = (n + 1) % phrases.length;
       gsap.to(rot, { yPercent: -30, autoAlpha: 0, duration: .22, ease: 'power2.in', onComplete: () => {
         rot.textContent = phrases[n];
+        showStickers(phrases[n]);
         const { chars } = SplitText.create(rot, { type: 'words,chars' }); // words first, so lines only break between words
         gsap.set(rot, { yPercent: 0, autoAlpha: 1 });
         gsap.from(chars, { yPercent: 80, autoAlpha: 0, stagger: .015, duration: .35, ease: 'back.out(2)' });
