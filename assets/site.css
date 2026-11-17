@@ -502,3 +502,6 @@ a.vstub:hover { text-decoration:underline; }
 .table.is-live .snap { cursor:grab; }
 .table.is-live .snap:active { cursor:grabbing; }
 @media (max-width:640px) { .table { height:1300px; } }
+
+/* touch: at least 44px tall to tap */
+@media (pointer:coarse) { .handles a, .li-link, .chipgroup button, .layers button, .island-panel a, .unit { min-height:44px; align-items:center; } }
