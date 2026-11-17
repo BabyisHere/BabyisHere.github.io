@@ -456,17 +456,9 @@ a.vstub:hover { text-decoration:underline; }
 .pres-poster { width:min(240px,60%); justify-self:end; rotate:6deg; margin:-18px 10px 0 0; }
 .work-intro { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px clamp(24px,4vw,56px); align-items:end; }
 .work-intro .print { width:clamp(150px,17vw,230px); rotate:3deg; }
-.roll { margin-bottom:40px; }
-.roll-top { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
-.roll-top .mono { font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--mute); }
-.roll-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px; }
-.roll-grid .print:nth-child(odd) { rotate:-1.5deg; }
-.roll-grid .print:nth-child(even) { rotate:1.5deg; }
-.roll-grid .print img { aspect-ratio:3 / 4; object-fit:cover; }
 @media (max-width:820px) {
   .scores-head, .work-intro { grid-template-columns:1fr; }
   .posters, .work-intro .print { justify-self:start; }
-  .roll-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .pres-poster { margin-top:-10px; }
 }
 
@@ -480,23 +472,24 @@ a.vstub:hover { text-decoration:underline; }
 .work-prints .print:nth-child(2) { rotate:5deg; margin:28px 0 0 -26px; }
 @media (max-width:820px) { .work-prints { justify-self:start; } }
 
-/* camera roll ring (ReactBits Rolling Gallery): a plain grid by default; the script adds .is-ring when motion is allowed */
-.roll-hint, .roll-btns { display:none; }
-.roll-btns { margin-left:auto; gap:8px; }
-.rb { width:44px; height:44px; border-radius:50%; border:2px solid var(--ink); background:var(--paper); color:var(--ink); display:grid; place-items:center; cursor:pointer; }
-.rb:hover { background:var(--ink); color:var(--paper); }
-.tri-l { rotate:180deg; }
-.roll.is-ring .roll-hint { display:block; }
-.roll.is-ring .roll-btns { display:flex; }
-.roll.is-ring .roll-stage { position:relative; height:calc(var(--fw) * 4 / 3 + 90px); perspective:1100px; overflow:hidden; cursor:grab;
-  -webkit-mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.roll.is-ring .roll-stage:active { cursor:grabbing; }
-.roll.is-ring .roll-grid { display:block; position:absolute; left:50%; top:44px; width:var(--fw); height:calc(var(--fw) * 4 / 3); transform-style:preserve-3d; }
-.roll.is-ring .roll-grid .print { position:absolute; inset:0; margin:0; padding:6px; rotate:none; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
-.roll.is-ring .roll-grid .print img { height:100%; aspect-ratio:auto; object-fit:cover; pointer-events:none; }
 
 /* Arcade stickers: topic icons floating under the rotating line */
 .stickers { display:flex; flex-wrap:wrap; align-items:center; gap:clamp(10px,2vw,22px); min-height:clamp(56px,6vw,76px); font-size:clamp(2.2rem,4vw,3.2rem); line-height:1; }
 .stk { display:inline-grid; place-items:center; filter:drop-shadow(0 6px 0 rgba(20,22,26,.25)); }
 .stk svg { height:1.2em; width:auto; }
 .stk svg[viewBox="0 0 64 22"] { width:2.6em; height:auto; }
+
+/* camera roll: prints scattered across a table; drag and throw them (motion on), static scatter otherwise */
+.table { position:relative; height:clamp(900px, 140vh, 1400px); margin:0 calc(-1 * clamp(16px,4vw,48px)) 48px; overflow:hidden; touch-action:pan-y;
+  background-image:radial-gradient(rgba(20,22,26,.06) 1px, transparent 1.3px); background-size:6px 6px; }
+.table-title { position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:12px; pointer-events:none; }
+.table-title .mono { font-size:.75rem; text-transform:uppercase; letter-spacing:.14em; color:var(--mute); }
+.table-title .big { font:800 clamp(3.4rem,13vw,11rem)/.85 var(--display); font-variation-settings:'wdth' 78; letter-spacing:-.04em; color:rgba(20,22,26,.9); }
+.snap { position:absolute; width:clamp(130px,17vw,250px); margin:0; background:#fff; padding:8px 8px 34px; border-radius:4px; rotate:var(--r); user-select:none;
+  box-shadow:0 2px 0 rgba(0,0,0,.05), 0 24px 40px -20px rgba(20,22,26,.55); }
+.snap img { display:block; width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:2px; pointer-events:none; }
+.snap figcaption { position:absolute; left:0; right:0; bottom:9px; text-align:center; font:500 .62rem var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--mute); }
+.snap.snap-tape::before { content:''; position:absolute; left:50%; top:-11px; width:70px; height:22px; translate:-50% 0; rotate:-3deg; background:rgba(255,201,51,.8); }
+.table.is-live .snap { cursor:grab; }
+.table.is-live .snap:active { cursor:grabbing; }
+@media (max-width:640px) { .table { height:1300px; } }
