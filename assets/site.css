@@ -57,6 +57,13 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .tk-arcade { background:var(--tomato); color:var(--ink); border-left:3px dotted var(--paper); }
 .tk-arcade .big { min-height:calc(3 * 1.08em); }
 .rot { background:linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 92%, transparent 92%); }
+.hm { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; font:700 .75rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.hm-pips { display:flex; gap:4px; }
+.hm-pips i { width:12px; height:12px; border-radius:50%; border:2px solid var(--ink); background:var(--yellow); animation:hm-fill .25s calc(1.6s + var(--i) * .12s) both; }
+.hm-pips i:last-child { translate:7px -6px; animation-name:hm-pop; }
+.hm-read { background:var(--ink); color:var(--yellow); padding:3px 8px; border-radius:999px; animation:hm-fill .3s 3s both; }
+@keyframes hm-fill { from { background:transparent; scale:.6; } }
+@keyframes hm-pop { from { background:transparent; translate:0 0; } 60% { translate:9px -9px; } }
 .tk-foot { margin-top:auto; display:flex; justify-content:space-between; align-items:end; gap:14px; flex-wrap:wrap; font-size:.8125rem; }
 .peel { position:relative; display:inline-block; font:700 .85rem var(--mono); text-transform:uppercase; background:var(--ink); color:var(--yellow); padding:9px 16px; border-radius:999px; transform:rotate(4deg); cursor:grab; touch-action:none; user-select:none; }
 .peel::after { content:''; position:absolute; right:6px; top:0; width:0; height:0; border-radius:0 999px 0 6px; background:linear-gradient(225deg, transparent 50%, var(--yellow) 50%); transition:width .25s, height .25s; }
