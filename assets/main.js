@@ -363,7 +363,12 @@ async function boot() {
   showStickers(phrases[0]);
   if (!reduce) {
     let n = 0, split = null;
+    let held = false; // hovering the Arcade half pauses the rotation
+    const arcade = $('.tk-arcade');
+    arcade.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') held = true; });
+    arcade.addEventListener('pointerleave', () => { held = false; });
     setInterval(() => {
+      if (held) return;
       n = (n + 1) % phrases.length;
       gsap.to(rot, { yPercent: -30, autoAlpha: 0, duration: .22, ease: 'power2.in', overwrite: true, onComplete: () => {
         split?.revert(); // a new split on the same element restores the previous line first, so undo the old split before writing
@@ -476,7 +481,10 @@ function motion(mm) {
   });
   let boost = 0;
   ScrollTrigger.create({ trigger: '.beyond', start: 'top bottom', end: 'bottom top', onUpdate: s => { boost = Math.min(Math.abs(s.getVelocity()) / 250, 6); } });
-  gsap.ticker.add(() => { boost *= .94; rows.forEach(t => t.timeScale(1 + boost)); });
+  let veloHeld = false; // hovering the marquee pauses it
+  $('.velo').addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') veloHeld = true; });
+  $('.velo').addEventListener('pointerleave', () => { veloHeld = false; });
+  gsap.ticker.add(() => { boost *= .94; rows.forEach(t => t.timeScale(veloHeld ? 0 : 1 + boost)); });
 
   // magnet handles
   if (fine) $$('[data-magnet]').forEach(el => {
