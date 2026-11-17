@@ -427,8 +427,9 @@ a.vstub:hover { text-decoration:underline; }
 /* the unannounced venture stays behind caution tape */
 .caution { position:absolute; left:-12%; width:124%; z-index:2; padding:7px 0; white-space:nowrap; overflow:hidden; font:800 .78rem var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink); text-align:center;
   background:repeating-linear-gradient(-45deg, var(--yellow) 0 18px, #F2B400 18px 36px); box-shadow:0 4px 12px rgba(0,0,0,.45); pointer-events:none; }
-.caution.c1 { top:104px; rotate:-7deg; }
-.caution.c2 { top:142px; rotate:5deg; background:repeating-linear-gradient(-45deg, var(--ink) 0 14px, var(--yellow) 14px 28px); color:transparent; height:16px; padding:0; }
+.caution { top:auto; }
+.caution.c1 { bottom:96px; rotate:-6deg; }
+.caution.c2 { bottom:130px; rotate:5deg; background:repeating-linear-gradient(-45deg, var(--ink) 0 14px, var(--yellow) 14px 28px); color:transparent; height:16px; padding:0; }
 .vtag.redacted { display:flex; gap:6px; align-items:center; height:1.4em; }
 .vtag.redacted i { display:block; height:.95em; border-radius:2px; background:currentColor; opacity:.85; }
 .vtag.redacted i:nth-child(1) { width:3.2em; } .vtag.redacted i:nth-child(2) { width:4.6em; } .vtag.redacted i:nth-child(3) { width:2.4em; }
