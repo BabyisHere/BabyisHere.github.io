@@ -395,7 +395,9 @@ a.vstub:hover { text-decoration:underline; }
 .admit h2 { margin-top:.25em; }
 .handles { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
 .handles a { display:inline-flex; align-items:baseline; gap:8px; font:700 .85rem var(--mono); border:2px solid var(--ink); border-radius:999px; padding:9px 15px; text-decoration:none; }
-.handles a small { font-size:.65rem; text-transform:uppercase; letter-spacing:.08em; opacity:.7; }
+.handles a small { font-size:.65rem; text-transform:uppercase; letter-spacing:.08em; }
+.handles a.primary { background:var(--ink); color:var(--paper); }
+.handles a.primary:hover { background:var(--paper); color:var(--ink); }
 .handles a:hover { background:var(--ink); color:var(--tomato); }
 .tape a { color:inherit; text-decoration:none; }
 .tape a:hover { text-decoration:underline; }
