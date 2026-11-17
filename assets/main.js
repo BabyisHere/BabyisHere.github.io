@@ -287,7 +287,7 @@ function careerRail(now = Date.now()) {
   const Y0 = 2019, yNow = new Date(now).getUTCFullYear(), span = yNow - Y0 + 1;
   const rail = $('.rail');
   rail.style.setProperty('--span', span);
-  $('.years', rail).innerHTML = Array.from({ length: span }, (_, i) => `<span>${Y0 + i}</span>`).join('');
+  $('.years', rail).innerHTML = '<span class="pre">2005</span>' + Array.from({ length: span }, (_, i) => `<span class="yr">${Y0 + i}</span>`).join('');
   $('.bar.tetr', rail).style.setProperty('--b', ((now - Date.UTC(Y0, 0, 1)) / (365.25 * 864e5)).toFixed(2));
   $$('[data-year]').forEach(el => { el.textContent = yNow; });
 }

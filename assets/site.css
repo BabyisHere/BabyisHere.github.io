@@ -177,7 +177,7 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .lane { display:grid; grid-template-columns:64px minmax(0,1fr); align-items:center; gap:12px; }
 .lane-k { font:700 .7rem var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--mute); }
 .bars { position:relative; height:46px; }
-.bar { position:absolute; left:calc(var(--a) / var(--span, 8) * 100%); width:calc((var(--b) - var(--a)) / var(--span, 8) * 100%); top:15px; height:16px; border-radius:4px; background:var(--navy); transform-origin:left center; box-shadow:inset 0 0 0 2px var(--ink); }
+.bar { position:absolute; left:calc((var(--pre) + var(--a) / var(--span, 8) * (1 - var(--pre))) * 100%); width:calc((var(--b) - var(--a)) / var(--span, 8) * (1 - var(--pre)) * 100%); top:15px; height:16px; border-radius:4px; background:var(--navy); transform-origin:left center; box-shadow:inset 0 0 0 2px var(--ink); }
 .bar.deg { background:var(--yellow); }
 .bar.nike { background:var(--tomato); }
 .bar.expo { z-index:1; top:11px; height:24px; background:var(--yellow); }
@@ -187,8 +187,10 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .bar.hw em { left:auto; right:0; } /* keeps it clear of the Nike label below */
 .axis { width:calc(100% - 76px); height:8px; margin-left:76px; }
 .axis path { stroke:var(--ink); stroke-width:3; fill:none; vector-effect:non-scaling-stroke; }
-.years { display:grid; grid-template-columns:repeat(var(--span, 8),1fr); margin-left:76px; font:500 .7rem var(--mono); color:var(--mute); }
-@media (max-width:560px) { .lane { grid-template-columns:44px minmax(0,1fr); gap:8px; } .axis, .years { margin-left:52px; width:calc(100% - 52px); } .years span:nth-child(even) { visibility:hidden; } .bar em { font-size:.6rem; } }
+.rail { --pre:.15; } /* 2005–2019 is squeezed into the first 15% so 2019 onwards keeps the width */
+.bar.school { left:0; width:calc(var(--pre) * 100% - 6px); background:var(--paper-2); }
+.years { display:grid; grid-template-columns:calc(var(--pre) * 100%) repeat(var(--span, 8),1fr); margin-left:76px; font:500 .7rem var(--mono); color:var(--mute); }
+@media (max-width:560px) { .lane { grid-template-columns:44px minmax(0,1fr); gap:8px; } .axis, .years { margin-left:52px; width:calc(100% - 52px); } .years .yr:nth-child(odd) { visibility:hidden; } .bar em { font-size:.6rem; } }
 
 /* tickets wrap in a grid by default; the script turns them into a pinned horizontal track on wide screens */
 .track-clip { overflow:hidden; padding-block:76px 30px; }
