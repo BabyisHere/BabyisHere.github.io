@@ -492,6 +492,7 @@ a.vstub:hover { text-decoration:underline; }
 
 /* Arcade stickers: topic icons floating under the rotating line */
 .stickers { display:flex; flex-wrap:wrap; align-items:center; gap:clamp(10px,2vw,22px); min-height:clamp(56px,6vw,76px); font-size:clamp(2.2rem,4vw,3.2rem); line-height:1; }
+.tk-arcade .stickers { flex:1; align-content:center; font-size:clamp(2.4rem,4.4vw,4rem); }
 .stk { display:inline-grid; place-items:center; filter:drop-shadow(0 6px 0 rgba(20,22,26,.25)); }
 .stk svg { height:1.2em; width:auto; }
 .stk svg[viewBox="0 0 64 22"] { width:2.6em; height:auto; }
