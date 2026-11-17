@@ -362,13 +362,15 @@ async function boot() {
   };
   showStickers(phrases[0]);
   if (!reduce) {
-    let n = 0;
+    let n = 0, split = null;
     setInterval(() => {
       n = (n + 1) % phrases.length;
-      gsap.to(rot, { yPercent: -30, autoAlpha: 0, duration: .22, ease: 'power2.in', onComplete: () => {
+      gsap.to(rot, { yPercent: -30, autoAlpha: 0, duration: .22, ease: 'power2.in', overwrite: true, onComplete: () => {
+        split?.revert(); // a new split on the same element restores the previous line first, so undo the old split before writing
         rot.textContent = phrases[n];
         showStickers(phrases[n]);
-        const { chars } = SplitText.create(rot, { type: 'words,chars' }); // words first, so lines only break between words
+        split = SplitText.create(rot, { type: 'words,chars' }); // words first, so lines only break between words
+        const { chars } = split;
         gsap.set(rot, { yPercent: 0, autoAlpha: 1 });
         gsap.from(chars, { yPercent: 80, autoAlpha: 0, stagger: .015, duration: .35, ease: 'back.out(2)' });
       } });
