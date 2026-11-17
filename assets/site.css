@@ -492,7 +492,7 @@ a.vstub:hover { text-decoration:underline; }
 .table-title { position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:12px; pointer-events:none; }
 .table-title .mono { font-size:.75rem; text-transform:uppercase; letter-spacing:.14em; color:var(--mute); }
 .table-title .big { font:800 clamp(3.4rem,13vw,11rem)/.85 var(--display); font-variation-settings:'wdth' 78; letter-spacing:-.04em; color:rgba(20,22,26,.9); }
-.snap { position:absolute; width:clamp(130px,17vw,250px); margin:0; background:#fff; padding:8px 8px 34px; border-radius:4px; rotate:var(--r); user-select:none;
+.snap { position:absolute; left:min(var(--x), calc(100% - clamp(130px,17vw,250px) - 8px)); width:clamp(130px,17vw,250px); margin:0; background:#fff; padding:8px 8px 34px; border-radius:4px; rotate:var(--r); user-select:none;
   box-shadow:0 2px 0 rgba(0,0,0,.05), 0 24px 40px -20px rgba(20,22,26,.55); }
 .snap img { display:block; width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:2px; pointer-events:none; }
 .snap figcaption { position:absolute; left:0; right:0; bottom:9px; text-align:center; font:500 .62rem var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--mute); }
