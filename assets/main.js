@@ -398,11 +398,11 @@ async function boot() {
   // bounce cards fan out when they come into view; hover lifts one
   mm.add('(min-width: 821px)', () => {
     const host = $('[data-bounce]'), cards = $$('.bc', host);
-    const fan = [[-150, -12], [-50, -4], [50, 4], [150, 12]];
-    cards.forEach((c, i) => gsap.set(c, { x: fan[i][0], rotate: fan[i][1] }));
+    const mid = (cards.length - 1) / 2; // works for any number of cards
+    cards.forEach((c, i) => gsap.set(c, { x: (i - mid) * 40, rotate: (i - mid) * 4 }));
     const spread = () => {
-      const sp = Math.min(300, (host.clientWidth - cards[0].offsetWidth) / 3);
-      cards.forEach((c, i) => gsap.to(c, { x: (i - 1.5) * sp, rotate: (i - 1.5) * 1.6, duration: reduce ? 0 : .9, ease: 'elastic.out(1, .6)', overwrite: 'auto' }));
+      const sp = Math.min(300, (host.clientWidth - cards[0].offsetWidth) / (cards.length - 1));
+      cards.forEach((c, i) => gsap.to(c, { x: (i - mid) * sp, rotate: (i - mid) * 2.2, duration: reduce ? 0 : .9, ease: 'elastic.out(1, .6)', overwrite: 'auto' }));
     };
     ScrollTrigger.create({ ...once(host, 'top 75%'), onEnter: spread });
     if (!reduce) cards.forEach(c => {
