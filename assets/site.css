@@ -17,7 +17,10 @@ a { color:inherit; }
 button { font:inherit; color:inherit; }
 .skip { position:absolute; left:-999px; top:8px; z-index:100; padding:8px 12px; background:var(--ink); color:var(--paper); }
 .skip:focus { left:8px; }
-:focus-visible { outline:3px solid var(--yellow); outline-offset:3px; }
+:focus-visible { outline:3px solid var(--focus, var(--ink)); outline-offset:3px; }
+/* yellow ring only where the background is dark; ink elsewhere (yellow on paper was 1.34:1) */
+.origin, .twist, .ventures, .contact, .tk-ledger, .flapwrap, .t-board, .t-lanyard, .foot-bar, .island, .tape { --focus:var(--yellow); }
+.vt-m2, .vt-tr { --focus:var(--ink); }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .mono { font-family:var(--mono); }
 .wrap { max-width:1280px; margin-inline:auto; padding-inline:clamp(16px,4vw,48px); }
