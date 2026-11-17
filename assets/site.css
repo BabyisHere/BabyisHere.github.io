@@ -184,11 +184,14 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .bar.tetr { background:var(--mint); }
 .bar em { position:absolute; left:0; bottom:calc(100% + 2px); font:700 .68rem var(--mono); font-style:normal; white-space:nowrap; color:var(--ink); }
 .bar em.low { bottom:auto; top:calc(100% + 2px); }
-.bar.hw em { left:auto; right:0; } /* keeps it clear of the Nike label below */
+.bar.hw em, .bar.nike em { left:auto; right:0; } /* right-aligned so neither label runs into its neighbour */
 .axis { width:calc(100% - 76px); height:8px; margin-left:76px; }
 .axis path { stroke:var(--ink); stroke-width:3; fill:none; vector-effect:non-scaling-stroke; }
 .rail { --pre:.15; } /* 2005–2019 is squeezed into the first 15% so 2019 onwards keeps the width */
 .bar.school { left:0; width:calc(var(--pre) * 100% - 6px); background:var(--paper-2); }
+.lane-school .bars { height:30px; }
+.lane-school .bar { top:7px; }
+.bar.school em { left:calc(100% + 10px); bottom:auto; top:50%; translate:0 -50%; } /* own lane, so the label sits beside the bar */
 .years { display:grid; grid-template-columns:calc(var(--pre) * 100%) repeat(var(--span, 8),1fr); margin-left:76px; font:500 .7rem var(--mono); color:var(--mute); }
 @media (max-width:560px) { .lane { grid-template-columns:44px minmax(0,1fr); gap:8px; } .axis, .years { margin-left:52px; width:calc(100% - 52px); } .years .yr:nth-child(odd) { visibility:hidden; } .bar em { font-size:.6rem; } }
 
