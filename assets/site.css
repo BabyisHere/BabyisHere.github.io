@@ -180,6 +180,7 @@ h2 { font:800 clamp(2.4rem,6vw,5rem)/.95 var(--display); letter-spacing:-.025em;
 .bar { position:absolute; left:calc(var(--a) / var(--span, 8) * 100%); width:calc((var(--b) - var(--a)) / var(--span, 8) * 100%); top:15px; height:16px; border-radius:4px; background:var(--navy); transform-origin:left center; }
 .bar.deg { background:var(--yellow); box-shadow:inset 0 0 0 2px var(--ink); }
 .bar.nike { background:var(--tomato); }
+.bar.expo { z-index:1; top:11px; height:24px; background:var(--yellow); box-shadow:inset 0 0 0 2px var(--ink); }
 .bar.tetr { background:var(--mint); box-shadow:inset 0 0 0 2px var(--ink); }
 .bar em { position:absolute; left:0; bottom:calc(100% + 2px); font:700 .68rem var(--mono); font-style:normal; white-space:nowrap; color:var(--ink); }
 .bar em.low { bottom:auto; top:calc(100% + 2px); }
