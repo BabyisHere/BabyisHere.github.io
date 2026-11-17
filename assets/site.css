@@ -450,7 +450,11 @@ a.vstub:hover { text-decoration:underline; }
 .print img { display:block; width:100%; height:auto; border-radius:2px; }
 .print figcaption { font:500 .66rem var(--mono); text-transform:uppercase; letter-spacing:.08em; color:var(--mute); text-align:center; margin-top:8px; }
 .print.taped::before { content:''; position:absolute; left:50%; top:-12px; width:74px; height:22px; translate:-50% 0; rotate:-4deg; background:rgba(255,201,51,.78); box-shadow:0 1px 2px rgba(0,0,0,.15); z-index:1; }
-.name-row { display:flex; align-items:flex-end; justify-content:space-between; gap:clamp(14px,3vw,40px); margin:clamp(24px,3vw,44px) 0 30px; }
+.hero { --pin-w:clamp(92px,14vw,190px); --pin-r:clamp(16px,3vw,40px); }
+.name-row { margin:clamp(24px,3vw,44px) 0 30px; padding-right:calc(var(--pin-w) + var(--pin-r) + 16px); }
+.ticket { position:relative; }
+.ticket > .idphoto { position:absolute; z-index:3; right:var(--pin-r); bottom:calc(100% - 30px); }
+.ticket > .idphoto::before { content:''; position:absolute; left:50%; top:-11px; width:64px; height:20px; translate:-50% 0; rotate:-5deg; background:rgba(255,201,51,.85); box-shadow:0 1px 2px rgba(0,0,0,.15); }
 .name-row .name { margin:0; }
 @media (min-width:1500px) { .hero .wrap { max-width:1480px; } .hero .name { font-size:clamp(8.8rem,7.4vw,10.6rem); } }
 .name-col { display:grid; gap:clamp(14px,2vw,26px); min-width:0; }
@@ -461,7 +465,7 @@ a.vstub:hover { text-decoration:underline; }
 .hud-live i { width:8px; height:8px; border-radius:50%; background:var(--tomato); animation:hud-blink 1.6s ease-in-out infinite; }
 @keyframes hud-blink { 50% { opacity:.25; } }
 @media (max-width:560px) { .hud { display:none; } }
-.idphoto { flex:none; width:clamp(92px,14vw,190px); margin:0 0 6px; background:#fff; padding:7px 7px 9px; border-radius:6px; rotate:4deg; box-shadow:0 22px 36px -18px rgba(20,22,26,.5); }
+.idphoto { width:var(--pin-w); margin:0; background:#fff; padding:7px 7px 9px; border-radius:6px; rotate:4deg; box-shadow:0 22px 36px -18px rgba(20,22,26,.5); }
 .idphoto img { display:block; width:100%; height:auto; border-radius:3px; }
 .idphoto figcaption { font:700 .56rem var(--mono); text-transform:uppercase; letter-spacing:.1em; color:var(--mute); text-align:center; margin-top:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .origin-left { display:grid; gap:34px; justify-items:start; }
