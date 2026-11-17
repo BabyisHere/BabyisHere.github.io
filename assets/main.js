@@ -403,16 +403,17 @@ async function boot() {
   // bounce cards fan out when they come into view; hover lifts one
   mm.add('(min-width: 821px)', () => {
     const host = $('[data-bounce]'), cards = $$('.bc', host);
-    const mid = (cards.length - 1) / 2; // works for any number of cards
-    cards.forEach((c, i) => gsap.set(c, { x: (i - mid) * 40, rotate: (i - mid) * 4 }));
+    // fans of four, one row per four cards, so every card stays readable
+    const per = 4, rows = Math.ceil(cards.length / per), mid = (per - 1) / 2, rowY = i => (Math.floor(i / per) - (rows - 1) / 2) * 260;
+    cards.forEach((c, i) => gsap.set(c, { x: (i % per - mid) * 40, y: rowY(i), rotate: (i % per - mid) * 4 }));
     const spread = () => {
-      const sp = Math.min(300, (host.clientWidth - cards[0].offsetWidth) / (cards.length - 1));
-      cards.forEach((c, i) => gsap.to(c, { x: (i - mid) * sp, rotate: (i - mid) * 2.2, duration: reduce ? 0 : .9, ease: 'elastic.out(1, .6)', overwrite: 'auto' }));
+      const sp = Math.min(300, (host.clientWidth - cards[0].offsetWidth) / (per - 1));
+      cards.forEach((c, i) => gsap.to(c, { x: (i % per - mid) * sp, y: rowY(i), rotate: (i % per - mid) * 1.6, duration: reduce ? 0 : .9, ease: 'elastic.out(1, .6)', overwrite: 'auto' }));
     };
     ScrollTrigger.create({ ...once(host, 'top 75%'), onEnter: spread });
     if (!reduce) cards.forEach(c => {
-      c.addEventListener('mouseenter', () => gsap.to(c, { y: -14, scale: 1.04, zIndex: 5, duration: .3 }));
-      c.addEventListener('mouseleave', () => gsap.to(c, { y: 0, scale: 1, zIndex: 1, duration: .4 }));
+      c.addEventListener('mouseenter', () => gsap.to(c, { scale: 1.06, zIndex: 5, duration: .3 }));
+      c.addEventListener('mouseleave', () => gsap.to(c, { scale: 1, zIndex: 1, duration: .4 }));
     });
   });
 

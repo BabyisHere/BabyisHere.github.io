@@ -368,7 +368,7 @@ a.vstub:hover { text-decoration:underline; }
 .velo-row { display:flex; width:max-content; }
 .velo-row span { font:800 clamp(2rem,5vw,4.2rem)/1.1 var(--display); letter-spacing:-.02em; white-space:nowrap; padding-right:.3em; }
 .velo-row.alt span { font:700 clamp(1.1rem,2.4vw,1.9rem)/1.4 var(--mono); color:var(--navy); }
-.bounce { position:relative; height:400px; display:grid; place-items:center; margin-block:10px 50px; }
+.bounce { position:relative; height:640px; display:grid; place-items:center; margin-block:10px 50px; }
 .bc { position:absolute; width:clamp(220px,22vw,280px); min-height:190px; border-radius:18px; padding:22px; border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink); display:flex; flex-direction:column; gap:8px; outline-offset:6px; }
 .bc .mono { font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; }
 .bc h3 { font:800 1.7rem/1 var(--display); }
